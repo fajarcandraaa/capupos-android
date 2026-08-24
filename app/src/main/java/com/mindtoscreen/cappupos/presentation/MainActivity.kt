@@ -14,4 +14,4 @@ class MainActivity : ComponentActivity() {
             finish()
         }, 2000)
     }
-}
+}// PR fix
