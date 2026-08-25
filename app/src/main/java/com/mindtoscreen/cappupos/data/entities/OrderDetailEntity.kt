@@ -3,6 +3,7 @@ package com.mindtoscreen.cappupos.data.entities
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(
     foreignKeys = [
@@ -15,15 +16,16 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = ProductEntity::class,
             parentColumns = ["id"],
-            childColumns = ["productId"],
-            onDelete = ForeignKey.CASCADE
+            childColumns = ["produkId"],
+            onDelete = ForeignKey.SET_NULL
         )
     ]
 )
 data class OrderDetailEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val orderId: Long,
-    val productId: Long,
-    val quantity: Int,
-    val price: Double
+    @PrimaryKey val id: String = UUID.randomUUID().toString(),
+    val orderId: String,
+    val produkId: String? = null,
+    val namaItem: String = "",
+    val qty: Int = 0,
+    val hargaSatuan: Double = 0.0
 )

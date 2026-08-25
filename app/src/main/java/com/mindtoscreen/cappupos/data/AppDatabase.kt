@@ -16,7 +16,7 @@ import com.mindtoscreen.cappupos.data.entities.*
         EmployeeEntity::class,
         StoreEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
