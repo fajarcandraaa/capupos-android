@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_500">#FF6200EE</color>
+    <string name="app_name">Capu POS</string>
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/purple_500</item>
+    </style>
+</resources>
