@@ -8,13 +8,13 @@ import com.mindtoscreen.cappupos.data.entities.ProductEntity
 
 @Dao
 interface ProductDao {
-    @Query("SELECT * FROM productentity")
+    @Query("SELECT * FROM products")
     suspend fun getAll(): List<ProductEntity>
 
-    @Query("SELECT * FROM productentity WHERE isDeleted = 0")
+    @Query("SELECT * FROM products WHERE isDeleted = 0")
     suspend fun getActiveProducts(): List<ProductEntity>
 
-    @Query("SELECT COUNT(*) FROM productentity WHERE isDeleted = 0")
+    @Query("SELECT COUNT(*) FROM products WHERE isDeleted = 0")
     suspend fun countActiveProducts(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -23,9 +23,9 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(products: List<ProductEntity>)
 
-    @Query("UPDATE productentity SET isDeleted = 1, deletedAt = :timestamp WHERE id = :productId")
+    @Query("UPDATE products SET isDeleted = 1, deletedAt = :timestamp WHERE id = :productId")
     suspend fun softDelete(productId: String, timestamp: Long)
 
-    @Query("DELETE FROM productentity WHERE id = :productId")
+    @Query("DELETE FROM products WHERE id = :productId")
     suspend fun hardDelete(productId: String)
 }

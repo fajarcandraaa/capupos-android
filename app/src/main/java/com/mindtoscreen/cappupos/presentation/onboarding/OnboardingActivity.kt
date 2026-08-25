@@ -51,7 +51,7 @@ class OnboardingActivity : ComponentActivity() {
                 // Set content
                 view.findViewById<Button>(R.id.btn_tambah_produk_pertama).setOnClickListener {
                     // Open add product flow
-                    startActivity(Intent(this@apply, AddProductActivity::class.java))
+                    startActivity(Intent(this@OnboardingActivity, AddProductActivity::class.java))
                     dismiss()
                 }
                 show()

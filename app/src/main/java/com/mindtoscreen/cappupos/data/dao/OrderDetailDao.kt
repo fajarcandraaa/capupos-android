@@ -8,7 +8,7 @@ import com.mindtoscreen.cappupos.data.entities.OrderDetailEntity
 
 @Dao
 interface OrderDetailDao {
-    @Query("SELECT * FROM orderdetailentity WHERE orderId = :orderId")
+    @Query("SELECT * FROM order_details WHERE orderId = :orderId")
     suspend fun getByOrder(orderId: String): List<OrderDetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -17,9 +17,9 @@ interface OrderDetailDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(items: List<OrderDetailEntity>)
 
-    @Query("DELETE FROM orderdetailentity WHERE orderId = :orderId")
+    @Query("DELETE FROM order_details WHERE orderId = :orderId")
     suspend fun deleteByOrder(orderId: String)
 
-    @Query("SELECT SUM(hargaSatuan * qty) FROM orderdetailentity WHERE orderId = :orderId")
+    @Query("SELECT SUM(price * quantity) FROM order_details WHERE orderId = :orderId")
     suspend fun getSubtotal(orderId: String): Double?
 }
