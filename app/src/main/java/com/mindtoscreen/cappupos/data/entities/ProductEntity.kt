@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.UUID
 
-@Entity
+@Entity(tableName = "products")
 data class ProductEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val nama: String = "",
@@ -17,5 +17,6 @@ data class ProductEntity(
     val stokMinimal: Int? = null,
     val createdAt: Long = 0L,
     val updatedAt: Long = 0L,
-    val isDeleted: Boolean = false
+    val isDeleted: Boolean = false,
+    val deletedAt: Long? = null
 )

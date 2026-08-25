@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.UUID
 
-@Entity
+@Entity(tableName = "categories")
 data class CategoryEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val nama: String = "",

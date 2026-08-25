@@ -14,25 +14,24 @@ import com.mindtoscreen.cappupos.domain.model.Product
 import com.mindtoscreen.cappupos.domain.usecase.SimpanProdukUseCase
 import com.mindtoscreen.cappupos.presentation.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.util.UUID
+import javax.inject.Inject
+
+@HiltViewModel
+class AddProductViewModel @Inject constructor(
+    private val simpanProdukUseCase: SimpanProdukUseCase
+) {
+    suspend fun simpanProduct(product: Product): Result<Unit> {
+        return simpanProdukUseCase.execute(product)
+    }
+}
 
 @AndroidEntryPoint
 class AddProductActivity : ComponentActivity() {
 
-    private val simpanProdukUseCase by lazy {
-        SimpanProdukUseCase(
-            com.mindtoscreen.cappupos.domain.repository.ProductRepositoryImpl(
-                // TODO: Inject properly via Hilt
-                object : com.mindtoscreen.cappupos.domain.repository.ProductRepository {
-                    override suspend fun getProducts(): List<Product> = emptyList()
-                    override suspend fun getProductCount(): Int = 0
-                    override suspend fun insertProduct(product: Product) {}
-                    override suspend fun deleteProduct(productId: String) {}
-                }
-            )
-        )
-    }
+    private val viewModel: AddProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,12 +72,15 @@ class AddProductActivity : ComponentActivity() {
             )
 
             lifecycleScope.launch {
-                // TODO: Call use case to save product
-                // simpanProdukUseCase.execute(product)
-
-                // Navigate to Home (FR-14.3)
-                startActivity(Intent(this@AddProductActivity, HomeActivity::class.java))
-                finish()
+                // Save product to database
+                val result = viewModel.simpanProduct(product)
+                if (result.isSuccess) {
+                    // Navigate to Home (FR-14.3)
+                    startActivity(Intent(this@AddProductActivity, HomeActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this@AddProductActivity, "Gagal menyimpan produk", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

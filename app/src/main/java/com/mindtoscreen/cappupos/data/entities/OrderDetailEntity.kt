@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity(
+    tableName = "order_details",
     foreignKeys = [
         ForeignKey(
             entity = OrderEntity::class,
@@ -16,7 +17,7 @@ import java.util.UUID
         ForeignKey(
             entity = ProductEntity::class,
             parentColumns = ["id"],
-            childColumns = ["produkId"],
+            childColumns = ["productId"],
             onDelete = ForeignKey.SET_NULL
         )
     ]
@@ -24,8 +25,7 @@ import java.util.UUID
 data class OrderDetailEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val orderId: String,
-    val produkId: String? = null,
-    val namaItem: String = "",
-    val qty: Int = 0,
-    val hargaSatuan: Double = 0.0
+    val productId: String? = null,
+    val quantity: Int = 0,
+    val price: Double = 0.0
 )
