@@ -9,23 +9,18 @@ import com.mindtoscreen.cappupos.data.entities.*
     entities = [
         ProductEntity::class,
         CategoryEntity::class,
-        CustomerEntity::class,
         OrderEntity::class,
-        OrderDetailEntity::class,
-        PaymentEntity::class,
-        EmployeeEntity::class,
-        StoreEntity::class
+        OrderDetailEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): ProductDao
-    abstract fun categoryDao(): CategoryDao
-    abstract fun customerDao(): CustomerDao
     abstract fun orderDao(): OrderDao
     abstract fun orderDetailDao(): OrderDetailDao
-    abstract fun paymentDao(): PaymentDao
-    abstract fun employeeDao(): EmployeeDao
-    abstract fun storeDao(): StoreDao
+
+    companion object {
+        val MIGRATION_1_2 = MigrationV1ToV2()
+    }
 }
