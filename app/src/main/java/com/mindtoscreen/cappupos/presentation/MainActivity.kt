@@ -7,7 +7,9 @@ import android.os.Looper
 import androidx.activity.ComponentActivity
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.presentation.onboarding.OnboardingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

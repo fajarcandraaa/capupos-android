@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/layout_activity_add_product.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/layout/activity_add_product.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/layout_activity_onboarding_empty_state.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/layout/activity_onboarding_empty_state.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/layout_activity_home.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/layout/activity_home.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/drawable_ic_empty_state.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/drawable/ic_empty_state.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.mindtoscreen.cappupos.app-debug-60:/drawable_ic_camera.xml.flat",
+        "source": "com.mindtoscreen.cappupos.app-main-62:/drawable/ic_camera.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/layout_activity_main.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/drawable_ic_camera.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/drawable/ic_camera.xml"
+    },
+    {
+        "merged": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-debug-60:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/candra/.gradle/daemon/8.7/com.mindtoscreen.cappupos.app-main-62:/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mindtoscreen.cappupos">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".AppApplication"
@@ -21,7 +20,11 @@
         </activity>
 
         <activity
-            android:name=".presentation.OnboardingActivity"
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.onboarding.AddProductActivity"
             android:exported="false" />
 
         <activity

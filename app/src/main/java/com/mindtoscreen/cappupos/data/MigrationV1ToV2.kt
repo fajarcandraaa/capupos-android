@@ -1,6 +1,6 @@
 package com.mindtoscreen.cappupos.data
 
-import androidx.room.Migration
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**

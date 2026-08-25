@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.domain.model.Product
@@ -22,7 +23,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddProductViewModel @Inject constructor(
     private val simpanProdukUseCase: SimpanProdukUseCase
-) {
+) : ViewModel() {
     suspend fun simpanProduct(product: Product): Result<Unit> {
         return simpanProdukUseCase.execute(product)
     }

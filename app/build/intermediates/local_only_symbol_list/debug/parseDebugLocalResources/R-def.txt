@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color purple_500
+drawable ic_camera
+drawable ic_empty_state
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id btn_batalkan_produk
+id btn_simpan_produk
+id btn_tambah_produk_pertama
+id edit_deskripsi_produk
+id edit_harga_produk
+id edit_nama_produk
+id iv_upload_foto
+layout activity_add_product
+layout activity_home
+layout activity_main
+layout activity_onboarding_empty_state
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style AppTheme
