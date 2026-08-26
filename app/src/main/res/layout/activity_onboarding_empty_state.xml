@@ -11,7 +11,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_empty_state" />
+        android:src="@drawable/ic_product" />
 
     <TextView
         android:layout_width="wrap_content"
