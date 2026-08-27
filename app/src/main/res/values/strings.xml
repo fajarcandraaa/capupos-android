@@ -12,4 +12,6 @@
     <string name="chip_makanan">Makanan</string>
     <string name="chip_minuman">Minuman</string>
     <string name="chip_penyedap">Penyedap</string>
+    <string name="nama_produk_placeholder">Nama Produk</string>
+    <string name="harga_produk_placeholder">Rp 0,00</string>
 </resources>

@@ -53,7 +53,9 @@ class HomeActivity : AppCompatActivity() {
             val products = viewModel.getProducts()
             adapter.updateData(products)
             binding.swipeRefresh.isRefreshing = false
-            binding.recyclerProducts.isVisible = products.isNotEmpty()
+            val isEmpty = products.isEmpty()
+            binding.recyclerProducts.isVisible = !isEmpty
+            binding.emptyState.isVisible = isEmpty
         }
     }
 }
