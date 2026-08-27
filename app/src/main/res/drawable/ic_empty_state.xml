@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="120dp"
-    android:height="120dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:width="180dp"
+    android:height="154dp"
+    android:viewportWidth="150"
+    android:viewportHeight="128">
+    <!-- Ilustrasi produk kosong: kotak paket sesuai Figma (f1f4f8 + detail 94a3b8) -->
     <path
-        android:fillColor="#FF6F6F6F"
-        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8 -3.59,8 -8,8zM7,9l5,5 5,-5z" />
+        android:fillColor="#F1F4F8"
+        android:pathData="M75,4L139,40L139,88L75,124L11,88L11,40Z" />
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M75,4L139,40L75,76L11,40Z" />
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M75,76L139,40L139,88L75,124Z" />
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M75,76L75,124L11,88L11,40Z" />
+    <path
+        android:fillColor="#F1F4F8"
+        android:pathData="M43,22L107,58L107,70L43,34Z" />
 </vector>

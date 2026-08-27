@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/surface_white</item>
+        <item name="colorSecondary">@color/brand_primary</item>
+        <item name="android:windowBackground">@color/surface_white</item>
     </style>
 
-    <color name="purple_500">#FF6200EE</color>
+    <style name="TextAppearance.Cappu.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Cappu.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.Cappu.Button.Pill" parent="Widget.Material3.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/surface_white</item>
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
 </resources>

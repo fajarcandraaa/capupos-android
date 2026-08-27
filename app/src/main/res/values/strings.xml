@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Capu POS</string>
+    <string name="app_name">Cappu POS</string>
+    <string name="versi_aplikasi">Versi aplikasi 1.0</string>
+    <string name="tab_produk">Produk</string>
+    <string name="tab_langsung">Langsung</string>
+    <string name="produk_belum_tersedia">Produk belum tersedia</string>
+    <string name="empty_state_subtitle">Anda belum melakukan pengelolaan data produk. Silahkan tambahkan sekarang.</string>
+    <string name="tambah_produk">Tambah produk</string>
+    <string name="pencarian">Pencarian</string>
+    <string name="chip_semua">Semua</string>
+    <string name="chip_makanan">Makanan</string>
+    <string name="chip_minuman">Minuman</string>
+    <string name="chip_penyedap">Penyedap</string>
 </resources>
