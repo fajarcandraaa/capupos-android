@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Figma design tokens -->
+    <color name="brand_primary">#0A66B2</color>
+    <color name="text_primary">#101828</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_tertiary">#64748B</color>
+    <color name="text_disabled">#94A3B8</color>
+    <color name="border_soft">#E2E8F0</color>
+    <color name="border_medium">#CBD5E1</color>
+    <color name="surface_soft">#F1F4F8</color>
+    <color name="surface_white">#FFFFFF</color>
+</resources>
