@@ -31,6 +31,18 @@
             android:name=".presentation.HomeActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".presentation.produk.ProdukListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.produk.TambahProdukActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.produk.ProductDetailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
