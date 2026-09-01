@@ -75,6 +75,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tab_produk"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -86,6 +87,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tab_langsung"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -132,6 +134,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/chip_semua"
                             android:layout_width="wrap_content"
                             android:layout_height="36dp"
                             android:background="@drawable/bg_chip_active"
@@ -144,6 +147,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/chip_makanan"
                             android:layout_width="wrap_content"
                             android:layout_height="36dp"
                             android:layout_marginStart="10dp"
@@ -156,6 +160,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/chip_minuman"
                             android:layout_width="wrap_content"
                             android:layout_height="36dp"
                             android:layout_marginStart="10dp"
@@ -168,6 +173,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/chip_penyedap"
                             android:layout_width="wrap_content"
                             android:layout_height="36dp"
                             android:layout_marginStart="10dp"

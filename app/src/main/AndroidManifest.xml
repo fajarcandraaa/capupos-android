@@ -32,10 +32,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".presentation.produk.ProdukListActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".presentation.produk.TambahProdukActivity"
             android:exported="false" />
 
