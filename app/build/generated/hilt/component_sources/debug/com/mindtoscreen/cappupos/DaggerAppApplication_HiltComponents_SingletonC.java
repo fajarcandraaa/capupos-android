@@ -17,6 +17,8 @@ import com.mindtoscreen.cappupos.domain.repository.ProductRepository;
 import com.mindtoscreen.cappupos.domain.usecase.CekProdukKosongUseCase;
 import com.mindtoscreen.cappupos.domain.usecase.SimpanProdukUseCase;
 import com.mindtoscreen.cappupos.presentation.HomeActivity;
+import com.mindtoscreen.cappupos.presentation.HomeViewModel;
+import com.mindtoscreen.cappupos.presentation.HomeViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.mindtoscreen.cappupos.presentation.MainActivity;
 import com.mindtoscreen.cappupos.presentation.onboarding.AddProductActivity;
 import com.mindtoscreen.cappupos.presentation.onboarding.AddProductViewModel;
@@ -40,8 +42,10 @@ import dagger.hilt.android.internal.modules.ApplicationContextModule;
 import dagger.hilt.android.internal.modules.ApplicationContextModule_ProvideContextFactory;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.DoubleCheck;
+import dagger.internal.MapBuilder;
 import dagger.internal.Preconditions;
 import dagger.internal.Provider;
+import dagger.internal.SetBuilder;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -390,7 +394,7 @@ public final class DaggerAppApplication_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return Collections.<String>singleton(AddProductViewModel_HiltModules_KeyModule_ProvideFactory.provide());
+      return SetBuilder.<String>newSetBuilder(2).add(AddProductViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(HomeViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
     }
 
     @Override
@@ -424,6 +428,8 @@ public final class DaggerAppApplication_HiltComponents_SingletonC {
 
     private Provider<AddProductViewModel> addProductViewModelProvider;
 
+    private Provider<HomeViewModel> homeViewModelProvider;
+
     private ViewModelCImpl(SingletonCImpl singletonCImpl,
         ActivityRetainedCImpl activityRetainedCImpl, SavedStateHandle savedStateHandleParam,
         ViewModelLifecycle viewModelLifecycleParam) {
@@ -442,11 +448,12 @@ public final class DaggerAppApplication_HiltComponents_SingletonC {
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
       this.addProductViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
     }
 
     @Override
     public Map<String, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
-      return Collections.<String, javax.inject.Provider<ViewModel>>singletonMap("com.mindtoscreen.cappupos.presentation.onboarding.AddProductViewModel", ((Provider) addProductViewModelProvider));
+      return MapBuilder.<String, javax.inject.Provider<ViewModel>>newMapBuilder(2).put("com.mindtoscreen.cappupos.presentation.onboarding.AddProductViewModel", ((Provider) addProductViewModelProvider)).put("com.mindtoscreen.cappupos.presentation.HomeViewModel", ((Provider) homeViewModelProvider)).build();
     }
 
     @Override
@@ -477,6 +484,9 @@ public final class DaggerAppApplication_HiltComponents_SingletonC {
         switch (id) {
           case 0: // com.mindtoscreen.cappupos.presentation.onboarding.AddProductViewModel 
           return (T) new AddProductViewModel(viewModelCImpl.simpanProdukUseCase());
+
+          case 1: // com.mindtoscreen.cappupos.presentation.HomeViewModel 
+          return (T) new HomeViewModel(singletonCImpl.bindProductRepositoryProvider.get());
 
           default: throw new AssertionError(id);
         }

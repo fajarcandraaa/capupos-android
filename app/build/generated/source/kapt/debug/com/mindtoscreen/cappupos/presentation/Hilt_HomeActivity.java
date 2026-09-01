@@ -2,10 +2,10 @@ package com.mindtoscreen.cappupos.presentation;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.activity.ComponentActivity;
 import androidx.activity.contextaware.OnContextAvailableListener;
 import androidx.annotation.CallSuper;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.internal.lifecycle.DefaultViewModelFactories;
 import dagger.hilt.android.internal.managers.ActivityComponentManager;
@@ -19,7 +19,7 @@ import java.lang.Override;
 /**
  * A generated base class to be extended by the @dagger.hilt.android.AndroidEntryPoint annotated class. If using the Gradle plugin, this is swapped as the base class via bytecode transformation.
  */
-public abstract class Hilt_HomeActivity extends ComponentActivity implements GeneratedComponentManagerHolder {
+public abstract class Hilt_HomeActivity extends AppCompatActivity implements GeneratedComponentManagerHolder {
   private SavedStateHandleHolder savedStateHandleHolder;
 
   private volatile ActivityComponentManager componentManager;

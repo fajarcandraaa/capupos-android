@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Tab aktif: underline 2dp #101828 di bawah, sesuai Figma (stroke bottom INSIDE) -->
+    <item android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <size android:height="2dp" />
+            <solid android:color="@color/text_primary" />
+        </shape>
+    </item>
+</layer-list>

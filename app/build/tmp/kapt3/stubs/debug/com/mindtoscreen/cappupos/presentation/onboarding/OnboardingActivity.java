@@ -20,7 +20,7 @@ public final class OnboardingActivity extends androidx.activity.ComponentActivit
     public com.mindtoscreen.cappupos.domain.usecase.CekProdukKosongUseCase cekProdukKosongUseCase;
     
     public OnboardingActivity() {
-        super(0);
+        super();
     }
     
     @org.jetbrains.annotations.NotNull()

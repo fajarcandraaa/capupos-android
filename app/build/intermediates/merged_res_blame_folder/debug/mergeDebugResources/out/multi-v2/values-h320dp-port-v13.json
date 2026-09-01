@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.mindtoscreen.cappupos.app-mergeDebugResources-58:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "outputFile": "com.mindtoscreen.cappupos.app-mergeDebugResources-50:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
                     "source": "/Users/candra/.gradle/caches/transforms-4/b585b5965c27daff0cd13206a3f2f0ef/transformed/material-1.12.0/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",

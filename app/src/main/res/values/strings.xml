@@ -14,4 +14,29 @@
     <string name="chip_penyedap">Penyedap</string>
     <string name="nama_produk_placeholder">Nama Produk</string>
     <string name="harga_produk_placeholder">Rp 0,00</string>
+
+    <!-- Produk: form & detail -->
+    <string name="label_foto_produk">Foto produk</string>
+    <string name="label_nama_produk">Nama Produk</string>
+    <string name="label_kategori">Kategori</string>
+    <string name="label_harga">Harga</string>
+    <string name="label_deskripsi">Deskripsi</string>
+    <string name="label_deskripsi_opsional">Deskripsi (Opsional)</string>
+    <string name="hint_nama_produk">Masukkan nama produk</string>
+    <string name="hint_harga">0</string>
+    <string name="hint_deskripsi">Masukkan deskripsi</string>
+    <string name="btn_batal">Batal</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="btn_ubah">Ubah</string>
+    <string name="btn_hapus">Hapus</string>
+    <string name="detail_produk_title">Detail Produk</string>
+    <string name="error_nama_wajib">Nama produk wajib diisi</string>
+    <string name="error_kategori_wajib">Kategori wajib dipilih</string>
+    <string name="msg_simpan_sukses">Produk berhasil disimpan</string>
+    <string name="msg_ubah_sukses">Produk berhasil diubah</string>
+    <string name="msg_gagal_simpan">Gagal menyimpan produk</string>
+    <string name="msg_gagal_ubah">Gagal mengubah produk</string>
+    <string name="msg_gagal_hapus">Gagal menghapus produk</string>
+    <string name="dialog_hapus_title">Hapus Produk</string>
+    <string name="dialog_hapus_message">Apakah Anda yakin ingin menghapus \"%1$s\"?</string>
 </resources>
