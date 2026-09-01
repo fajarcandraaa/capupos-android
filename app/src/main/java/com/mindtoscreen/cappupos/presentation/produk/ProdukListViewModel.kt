@@ -25,10 +25,6 @@ class ProdukListViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(ProdukListUiState())
     val uiState: StateFlow<ProdukListUiState> = _uiState.asStateFlow()
 
-    init {
-        loadProducts()
-    }
-
     fun loadProducts() {
         viewModelScope.launch {
             val all = productRepository.getProducts()

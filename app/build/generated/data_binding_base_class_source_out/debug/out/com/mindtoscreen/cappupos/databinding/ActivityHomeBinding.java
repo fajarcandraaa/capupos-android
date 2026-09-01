@@ -4,25 +4,60 @@ package com.mindtoscreen.cappupos.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mindtoscreen.cappupos.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class ActivityHomeBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final CoordinatorLayout rootView;
 
-  private ActivityHomeBinding(@NonNull LinearLayout rootView) {
+  @NonNull
+  public final EditText editPencarian;
+
+  @NonNull
+  public final LinearLayout emptyState;
+
+  @NonNull
+  public final FloatingActionButton fabTambah;
+
+  @NonNull
+  public final RecyclerView recyclerProducts;
+
+  @NonNull
+  public final SwipeRefreshLayout swipeRefresh;
+
+  @NonNull
+  public final Toolbar toolbar;
+
+  private ActivityHomeBinding(@NonNull CoordinatorLayout rootView, @NonNull EditText editPencarian,
+      @NonNull LinearLayout emptyState, @NonNull FloatingActionButton fabTambah,
+      @NonNull RecyclerView recyclerProducts, @NonNull SwipeRefreshLayout swipeRefresh,
+      @NonNull Toolbar toolbar) {
     this.rootView = rootView;
+    this.editPencarian = editPencarian;
+    this.emptyState = emptyState;
+    this.fabTambah = fabTambah;
+    this.recyclerProducts = recyclerProducts;
+    this.swipeRefresh = swipeRefresh;
+    this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +78,50 @@ public final class ActivityHomeBinding implements ViewBinding {
 
   @NonNull
   public static ActivityHomeBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.edit_pencarian;
+      EditText editPencarian = ViewBindings.findChildViewById(rootView, id);
+      if (editPencarian == null) {
+        break missingId;
+      }
 
-    return new ActivityHomeBinding((LinearLayout) rootView);
+      id = R.id.empty_state;
+      LinearLayout emptyState = ViewBindings.findChildViewById(rootView, id);
+      if (emptyState == null) {
+        break missingId;
+      }
+
+      id = R.id.fab_tambah;
+      FloatingActionButton fabTambah = ViewBindings.findChildViewById(rootView, id);
+      if (fabTambah == null) {
+        break missingId;
+      }
+
+      id = R.id.recycler_products;
+      RecyclerView recyclerProducts = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerProducts == null) {
+        break missingId;
+      }
+
+      id = R.id.swipe_refresh;
+      SwipeRefreshLayout swipeRefresh = ViewBindings.findChildViewById(rootView, id);
+      if (swipeRefresh == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new ActivityHomeBinding((CoordinatorLayout) rootView, editPencarian, emptyState,
+          fabTambah, recyclerProducts, swipeRefresh, toolbar);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

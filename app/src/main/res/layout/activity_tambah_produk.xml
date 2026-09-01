@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:background="@drawable/bg_search_field"
-                android:contentDescription="Foto produk"
+                android:contentDescription="@string/label_foto_produk"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_product" />
 
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Nama Produk"
+                android:text="@string/label_nama_produk"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_search_field"
-                android:hint="Masukkan nama produk"
+                android:hint="@string/hint_nama_produk"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textColor="@color/text_primary"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Kategori"
+                android:text="@string/label_kategori"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Harga"
+                android:text="@string/label_harga"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -91,7 +91,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_search_field"
-                android:hint="0"
+                android:hint="@string/hint_harga"
                 android:inputType="numberDecimal"
                 android:padding="12dp"
                 android:textColor="@color/text_primary"
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Deskripsi (Opsional)"
+                android:text="@string/label_deskripsi_opsional"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_search_field"
                 android:gravity="top"
-                android:hint="Masukkan deskripsi"
+                android:hint="@string/hint_deskripsi"
                 android:inputType="textMultiLine"
                 android:padding="12dp"
                 android:textColor="@color/text_primary"
@@ -139,7 +139,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_search_field"
-            android:text="Batal"
+            android:text="@string/btn_batal"
             android:textColor="@color/text_primary" />
 
         <Button
@@ -148,7 +148,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:backgroundTint="@color/brand_primary"
-            android:text="Simpan"
+            android:text="@string/btn_simpan"
             android:textColor="@color/surface_white" />
     </LinearLayout>
 

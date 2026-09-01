@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityProductDetailBinding
 import com.mindtoscreen.cappupos.domain.model.Product
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,10 +25,6 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private var currentProduct: Product? = null
     private var editMode = false
-
-    private val kategoriList = listOf("Makanan", "Minuman", "Penyedap")
-    private val kategoriIdMap = mapOf("Makanan" to "makanan", "Minuman" to "minuman", "Penyedap" to "penyedap")
-    private val kategoriNameMap = mapOf("makanan" to "Makanan", "minuman" to "Minuman", "penyedap" to "Penyedap")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +48,11 @@ class ProductDetailActivity : AppCompatActivity() {
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Detail Produk"
+        supportActionBar?.title = getString(R.string.detail_produk_title)
     }
 
     private fun setupKategoriSpinner() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, kategoriList)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, KategoriConstants.KATEGORI_LIST)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerKategori.adapter = adapter
     }
@@ -80,8 +77,8 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.editHarga.setText(if (product.harga == 0.0) "" else product.harga.toString())
         binding.editDeskripsi.setText(product.deskripsi ?: "")
 
-        val kategoriNama = kategoriNameMap[product.kategoriId]
-        val index = kategoriList.indexOf(kategoriNama)
+        val kategoriNama = KategoriConstants.KATEGORI_NAME_MAP[product.kategoriId]
+        val index = KategoriConstants.KATEGORI_LIST.indexOf(kategoriNama)
         if (index >= 0) binding.spinnerKategori.setSelection(index)
     }
 
@@ -91,7 +88,7 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.editHarga.isEnabled = enabled
         binding.editDeskripsi.isEnabled = enabled
         binding.spinnerKategori.isEnabled = enabled
-        binding.btnUbah.text = if (enabled) "Simpan" else "Ubah"
+        binding.btnUbah.text = if (enabled) getString(R.string.btn_simpan) else getString(R.string.btn_ubah)
     }
 
     private fun simpanUbah() {
@@ -102,13 +99,13 @@ class ProductDetailActivity : AppCompatActivity() {
         val kategoriNama = binding.spinnerKategori.selectedItem?.toString() ?: ""
 
         if (nama.isEmpty()) {
-            binding.editNama.error = "Nama produk wajib diisi"
+            binding.editNama.error = getString(R.string.error_nama_wajib)
             return
         }
 
         val updated = product.copy(
             nama = nama,
-            kategoriId = kategoriIdMap[kategoriNama] ?: product.kategoriId,
+            kategoriId = KategoriConstants.KATEGORI_ID_MAP[kategoriNama] ?: product.kategoriId,
             harga = harga,
             deskripsi = deskripsi
         )
@@ -116,9 +113,9 @@ class ProductDetailActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.ubahProduct(updated).onSuccess {
                 setEditMode(false)
-                Toast.makeText(this@ProductDetailActivity, "Produk berhasil diubah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetailActivity, getString(R.string.msg_ubah_sukses), Toast.LENGTH_SHORT).show()
             }.onFailure {
-                Toast.makeText(this@ProductDetailActivity, "Gagal mengubah produk", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetailActivity, getString(R.string.msg_gagal_ubah), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -126,18 +123,18 @@ class ProductDetailActivity : AppCompatActivity() {
     private fun konfirmasiHapus() {
         val product = currentProduct ?: return
         AlertDialog.Builder(this)
-            .setTitle("Hapus Produk")
-            .setMessage("Apakah Anda yakin ingin menghapus \"${product.nama}\"?")
-            .setPositiveButton("Hapus") { _, _ ->
+            .setTitle(R.string.dialog_hapus_title)
+            .setMessage(getString(R.string.dialog_hapus_message, product.nama))
+            .setPositiveButton(R.string.btn_hapus) { _, _ ->
                 lifecycleScope.launch {
                     viewModel.hapusProduct(product.id ?: "").onSuccess {
                         finish()
                     }.onFailure {
-                        Toast.makeText(this@ProductDetailActivity, "Gagal menghapus produk", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ProductDetailActivity, getString(R.string.msg_gagal_hapus), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(R.string.btn_batal, null)
             .show()
     }
 

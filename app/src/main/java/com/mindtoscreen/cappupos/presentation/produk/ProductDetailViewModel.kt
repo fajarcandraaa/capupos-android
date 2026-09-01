@@ -29,8 +29,7 @@ class ProductDetailViewModel @Inject constructor(
 
     fun loadProduct(productId: String) {
         viewModelScope.launch {
-            _product.value = productRepository.getProducts()
-                .firstOrNull { it.id == productId }
+            _product.value = productRepository.getProductById(productId)
         }
     }
 

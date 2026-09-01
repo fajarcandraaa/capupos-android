@@ -13,6 +13,10 @@ class ProductRepositoryImpl @Inject constructor(
         return productDao.getActiveProducts().map { it.toDomain() }
     }
 
+    override suspend fun getProductById(productId: String): Product? {
+        return productDao.getById(productId)?.toDomain()
+    }
+
     override suspend fun getProductCount(): Int {
         return productDao.countActiveProducts()
     }
@@ -22,7 +26,7 @@ class ProductRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteProduct(productId: String) {
-        productDao.hardDelete(productId)
+        productDao.softDelete(productId, System.currentTimeMillis())
     }
 
     private fun ProductEntity.toDomain(): Product {

@@ -14,6 +14,9 @@ interface ProductDao {
     @Query("SELECT * FROM products WHERE isDeleted = 0")
     suspend fun getActiveProducts(): List<ProductEntity>
 
+    @Query("SELECT * FROM products WHERE id = :id AND isDeleted = 0")
+    suspend fun getById(id: String): ProductEntity?
+
     @Query("SELECT COUNT(*) FROM products WHERE isDeleted = 0")
     suspend fun countActiveProducts(): Int
 

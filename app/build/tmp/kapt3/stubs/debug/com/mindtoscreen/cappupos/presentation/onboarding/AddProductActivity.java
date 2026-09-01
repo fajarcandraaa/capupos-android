@@ -24,7 +24,7 @@ public final class AddProductActivity extends androidx.activity.ComponentActivit
     private final kotlin.Lazy viewModel$delegate = null;
     
     public AddProductActivity() {
-        super(0);
+        super();
     }
     
     private final com.mindtoscreen.cappupos.presentation.onboarding.AddProductViewModel getViewModel() {

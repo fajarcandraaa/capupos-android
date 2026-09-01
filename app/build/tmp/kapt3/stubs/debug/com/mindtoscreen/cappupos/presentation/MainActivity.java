@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public final class MainActivity extends androidx.activity.ComponentActivity {
     
     public MainActivity() {
-        super(0);
+        super();
     }
     
     @java.lang.Override()

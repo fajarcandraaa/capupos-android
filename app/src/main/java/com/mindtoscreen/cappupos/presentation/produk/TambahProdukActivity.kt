@@ -1,11 +1,14 @@
 package com.mindtoscreen.cappupos.presentation.produk
 
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityTambahProdukBinding
 import com.mindtoscreen.cappupos.domain.model.Product
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,10 +26,14 @@ class TambahProdukActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTambahProdukBinding
     private val viewModel: TambahProdukViewModel by viewModels()
+    private var selectedFotoUri: Uri? = null
 
-    // Kategori statis (TASK-004 handles kategori CRUD).
-    private val kategoriList = listOf("Makanan", "Minuman", "Penyedap")
-    private val kategoriIdMap = mapOf("Makanan" to "makanan", "Minuman" to "minuman", "Penyedap" to "penyedap")
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let {
+            selectedFotoUri = it
+            binding.ivFoto.setImageURI(it)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +42,7 @@ class TambahProdukActivity : AppCompatActivity() {
 
         setupToolbar()
         setupKategoriSpinner()
+        setupFotoPicker()
         setupButtons()
     }
 
@@ -44,9 +52,15 @@ class TambahProdukActivity : AppCompatActivity() {
     }
 
     private fun setupKategoriSpinner() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, kategoriList)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, KategoriConstants.KATEGORI_LIST)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerKategori.adapter = adapter
+    }
+
+    private fun setupFotoPicker() {
+        binding.ivFoto.setOnClickListener {
+            pickImageLauncher.launch("image/*")
+        }
     }
 
     private fun setupButtons() {
@@ -59,18 +73,19 @@ class TambahProdukActivity : AppCompatActivity() {
             val kategoriNama = binding.spinnerKategori.selectedItem?.toString() ?: ""
 
             if (nama.isEmpty()) {
-                binding.editNama.error = "Nama produk wajib diisi"
+                binding.editNama.error = getString(R.string.error_nama_wajib)
                 return@setOnClickListener
             }
             if (kategoriNama.isEmpty()) {
-                Toast.makeText(this, "Kategori wajib dipilih", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_kategori_wajib), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val product = Product(
                 id = UUID.randomUUID().toString(),
                 nama = nama,
-                kategoriId = kategoriIdMap[kategoriNama],
+                foto = selectedFotoUri?.toString(),
+                kategoriId = KategoriConstants.KATEGORI_ID_MAP[kategoriNama],
                 harga = harga,
                 deskripsi = deskripsi,
                 lacakStok = false
@@ -80,7 +95,7 @@ class TambahProdukActivity : AppCompatActivity() {
                 viewModel.simpanProduct(product).onSuccess {
                     finish()
                 }.onFailure {
-                    Toast.makeText(this@TambahProdukActivity, "Gagal menyimpan produk", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@TambahProdukActivity, getString(R.string.msg_gagal_simpan), Toast.LENGTH_SHORT).show()
                 }
             }
         }

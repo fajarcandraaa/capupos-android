@@ -6,7 +6,7 @@ import javax.inject.Inject
 /**
  * Use case untuk menghapus produk.
  * FR-01.2: Sistem harus memungkinkan pengguna menghapus produk
- * Hard delete untuk MVP (soft delete akan digunakan nanti untuk transaksi history).
+ * Soft delete (isDeleted=1) agar riwayat transaksi tidak rusak (SDD 5.2 + FR-08).
  */
 class HapusProdukUseCase @Inject constructor(
     private val productRepository: ProductRepository

@@ -8,10 +8,8 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.view.setPadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityProdukListBinding
 import com.mindtoscreen.cappupos.domain.model.Product
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,14 +26,6 @@ class ProdukListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProdukListBinding
     private val viewModel: ProdukListViewModel by viewModels()
     private val adapter = ProdukGridAdapter { product -> openDetail(product) }
-
-    // Kategori statis (TASK-004 handles kategori CRUD). Sesuai chip di HomeActivity.
-    private val kategori = listOf(
-        null to "Semua",
-        "makanan" to "Makanan",
-        "minuman" to "Minuman",
-        "penyedap" to "Penyedap"
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +51,7 @@ class ProdukListActivity : AppCompatActivity() {
 
     private fun setupKategoriChips() {
         binding.kategoriChips.removeAllViews()
-        kategori.forEach { (id, label) ->
+        KategoriConstants.KATEGORI_ITEMS.forEach { (id, label) ->
             val chip = TextView(this).apply {
                 text = label
                 textSize = 12f
