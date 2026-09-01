@@ -6,12 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ItemProductBinding
 import com.mindtoscreen.cappupos.domain.model.Product
+import java.text.NumberFormat
+import java.util.Locale
 
 class ProductAdapter(
     private val onItemClick: (Product) -> Unit = {}
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var products = emptyList<Product>()
+
+    private val hargaFormat: NumberFormat = NumberFormat
+        .getNumberInstance(Locale("in", "ID"))
+        .apply {
+            maximumFractionDigits = 0
+            minimumFractionDigits = 0
+        }
 
     fun updateData(newProducts: List<Product>) {
         products = newProducts
@@ -36,7 +45,7 @@ class ProductAdapter(
     inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.textNama.text = product.nama
-            binding.textHarga.text = "Rp \${String.format(\"%.2f\", product.harga)}"
+            binding.textHarga.text = "Rp ${hargaFormat.format(product.harga)}"
             binding.imgFoto.setImageResource(R.drawable.ic_product)
 
             binding.root.setOnClickListener {

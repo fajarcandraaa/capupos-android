@@ -2,6 +2,9 @@ package com.mindtoscreen.cappupos.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextWatcher
+import android.text.Editable
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -9,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityHomeBinding
-import com.mindtoscreen.cappupos.presentation.onboarding.AddProductActivity
+import com.mindtoscreen.cappupos.presentation.produk.TambahProdukActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -27,8 +30,11 @@ class HomeActivity : AppCompatActivity() {
 
         setupToolbar()
         setupRecyclerView()
+        setupTabs()
+        setupKategoriChips()
+        setupSearch()
         setupFAB()
-        observeProducts()
+        observeState()
     }
 
     private fun setupToolbar() {
@@ -42,20 +48,83 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupFAB() {
-        binding.fabTambah.setOnClickListener {
-            startActivity(Intent(this, AddProductActivity::class.java))
+    private fun setupTabs() {
+        binding.root.findViewById<TextView>(R.id.tab_produk).setOnClickListener {
+            viewModel.selectTab("produk")
+            updateTabStyle(
+                binding.root.findViewById(R.id.tab_produk),
+                binding.root.findViewById(R.id.tab_langsung)
+            )
+        }
+        binding.root.findViewById<TextView>(R.id.tab_langsung).setOnClickListener {
+            viewModel.selectTab("langsung")
+            updateTabStyle(
+                binding.root.findViewById(R.id.tab_langsung),
+                binding.root.findViewById(R.id.tab_produk)
+            )
         }
     }
 
-    private fun observeProducts() {
+    private fun updateTabStyle(active: TextView, inactive: TextView) {
+        active.setBackgroundResource(R.drawable.bg_tab_active)
+        active.setTextColor(getColor(R.color.text_primary))
+        inactive.background = null
+        inactive.setTextColor(getColor(R.color.text_disabled))
+    }
+
+    private fun setupKategoriChips() {
+        val chips = listOf(
+            binding.root.findViewById<TextView>(R.id.chip_semua) to null,
+            binding.root.findViewById<TextView>(R.id.chip_makanan) to "makanan",
+            binding.root.findViewById<TextView>(R.id.chip_minuman) to "minuman",
+            binding.root.findViewById<TextView>(R.id.chip_penyedap) to "penyedap"
+        )
+
+        chips.forEachIndexed { idx, (chip, kategoriId) ->
+            chip.setOnClickListener {
+                viewModel.selectKategori(kategoriId)
+                updateChipStyles(chips.map { it.first }, idx)
+            }
+        }
+    }
+
+    private fun updateChipStyles(chips: List<TextView>, activeIdx: Int) {
+        chips.forEachIndexed { idx, chip ->
+            if (idx == activeIdx) {
+                chip.setBackgroundResource(R.drawable.bg_chip_active)
+                chip.setTextColor(getColor(R.color.surface_white))
+            } else {
+                chip.setBackgroundResource(R.drawable.bg_chip_inactive)
+                chip.setTextColor(getColor(R.color.text_primary))
+            }
+        }
+    }
+
+    private fun setupSearch() {
+        binding.editPencarian.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.onSearchQueryChanged(s?.toString() ?: "")
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    private fun setupFAB() {
+        binding.fabTambah.setOnClickListener {
+            startActivity(Intent(this, TambahProdukActivity::class.java))
+        }
+    }
+
+    private fun observeState() {
         lifecycleScope.launch {
-            val products = viewModel.getProducts()
-            adapter.updateData(products)
-            binding.swipeRefresh.isRefreshing = false
-            val isEmpty = products.isEmpty()
-            binding.recyclerProducts.isVisible = !isEmpty
-            binding.emptyState.isVisible = isEmpty
+            viewModel.uiState.collect { state ->
+                adapter.updateData(state.filteredProducts)
+                binding.swipeRefresh.isRefreshing = false
+                val isEmpty = state.filteredProducts.isEmpty()
+                binding.recyclerProducts.isVisible = !isEmpty
+                binding.emptyState.isVisible = isEmpty
+            }
         }
     }
 }
