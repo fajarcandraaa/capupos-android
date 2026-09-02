@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextWatcher
 import android.text.Editable
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -12,6 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityHomeBinding
+import com.mindtoscreen.cappupos.domain.model.Product
+import com.mindtoscreen.cappupos.presentation.produk.ProductDetailActivity
 import com.mindtoscreen.cappupos.presentation.produk.TambahProdukActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    private val adapter = ProductAdapter()
+    private val adapter = ProductAdapter { product -> openDetail(product) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
         setupKategoriChips()
         setupSearch()
         setupFAB()
+        setupMenuButton()
         observeState()
     }
 
@@ -116,6 +120,14 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupMenuButton() {
+        binding.menuButton.setOnClickListener {
+            // TODO: tentukan target navigasi menu kanan atas (drawer/settings).
+            // Belum ada spec di Figma node Home. Placeholder agar klik terdaftar.
+            Toast.makeText(this, "Menu belum tersedia", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun observeState() {
         lifecycleScope.launch {
             viewModel.uiState.collect { state ->
@@ -126,5 +138,16 @@ class HomeActivity : AppCompatActivity() {
                 binding.emptyState.isVisible = isEmpty
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadProducts()
+    }
+
+    private fun openDetail(product: Product) {
+        val intent = Intent(this, ProductDetailActivity::class.java)
+        intent.putExtra(ProductDetailActivity.EXTRA_PRODUCT_ID, product.id)
+        startActivity(intent)
     }
 }

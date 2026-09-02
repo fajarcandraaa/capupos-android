@@ -10,7 +10,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class ProductAdapter(
-    private val onItemClick: (Product) -> Unit = {}
+    private val onItemClick: (Product) -> Unit = { }
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var products = emptyList<Product>()
