@@ -130,6 +130,7 @@
                     android:scrollbars="none">
 
                     <LinearLayout
+                        android:id="@+id/chip_container"
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:orientation="horizontal">
@@ -146,45 +147,6 @@
                             android:textColor="@color/surface_white"
                             android:textSize="12sp"
                             android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/chip_makanan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="36dp"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_chip_inactive"
-                            android:gravity="center"
-                            android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                            android:text="@string/chip_makanan"
-                            android:textColor="@color/text_primary"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/chip_minuman"
-                            android:layout_width="wrap_content"
-                            android:layout_height="36dp"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_chip_inactive"
-                            android:gravity="center"
-                            android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                            android:text="@string/chip_minuman"
-                            android:textColor="@color/text_primary"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/chip_penyedap"
-                            android:layout_width="wrap_content"
-                            android:layout_height="36dp"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_chip_inactive"
-                            android:gravity="center"
-                            android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                            android:text="@string/chip_penyedap"
-                            android:textColor="@color/text_primary"
-                            android:textSize="12sp" />
                     </LinearLayout>
                 </HorizontalScrollView>
 

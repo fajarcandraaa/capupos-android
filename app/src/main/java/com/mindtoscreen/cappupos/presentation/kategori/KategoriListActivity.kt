@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityKategoriListBinding
 import com.mindtoscreen.cappupos.domain.model.Kategori
 import dagger.hilt.android.AndroidEntryPoint

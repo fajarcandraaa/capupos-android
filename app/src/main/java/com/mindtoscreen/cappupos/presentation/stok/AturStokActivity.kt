@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityAturStokBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
