@@ -14,14 +14,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
+    private val categoryRepository: com.mindtoscreen.cappupos.domain.repository.CategoryRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
+        loadKategori()
         loadProducts()
+    }
+
+    private fun loadKategori() {
+        viewModelScope.launch {
+            try {
+                val kategori = categoryRepository.getKategories()
+                _uiState.update {
+                    it.copy(kategoriList = kategori)
+                }
+            } catch (e: Exception) {
+                // Silent fail untuk kategori
+            }
+        }
     }
 
     fun loadProducts() {
@@ -83,6 +98,7 @@ data class HomeUiState(
     val selectedKategoriId: String? = null,
     val searchQuery: String = "",
     val filteredProducts: List<Product> = emptyList(),
-    val selectedTab: String = "produk"
+    val selectedTab: String = "produk",
+    val kategoriList: List<com.mindtoscreen.cappupos.domain.model.Kategori> = emptyList()
 )
 

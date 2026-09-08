@@ -10,4 +10,5 @@
     <color name="border_medium">#CBD5E1</color>
     <color name="surface_soft">#F1F4F8</color>
     <color name="surface_white">#FFFFFF</color>
+    <color name="status_warning">#F59E0B</color>
 </resources>

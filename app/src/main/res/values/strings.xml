@@ -39,4 +39,29 @@
     <string name="msg_gagal_hapus">Gagal menghapus produk</string>
     <string name="dialog_hapus_title">Hapus Produk</string>
     <string name="dialog_hapus_message">Apakah Anda yakin ingin menghapus \"%1$s\"?</string>
+
+    <!-- Kategori -->
+    <string name="kategori_title">Kelola Kategori</string>
+    <string name="tambah_kategori">Tambah kategori</string>
+    <string name="tambah_kategori_title">Tambah Kategori</string>
+    <string name="ubah_kategori_title">Ubah Kategori</string>
+    <string name="hint_nama_kategori">Masukkan nama kategori</string>
+    <string name="error_nama_kategori_wajib">Nama kategori wajib diisi</string>
+    <string name="kategori_belum_ada">Belum ada kategori</string>
+    <string name="kategori_belum_ada_subtitle">Tambahkan kategori untuk mengelompokkan produk.</string>
+    <string name="dialog_hapus_kategori_title">Hapus Kategori</string>
+    <string name="dialog_hapus_kategori_message">Apakah Anda yakin ingin menghapus kategori \"%1$s\"?</string>
+    <string name="dialog_hapus_kategori_message_dengan_produk">Kategori \"%1$s\" masih dipakai %2$d produk. Produk terkait akan menjadi \"Tanpa Kategori\". Lanjutkan hapus?</string>
+
+    <!-- Stok -->
+    <string name="atur_stok_title">Atur Ketersediaan Stok</string>
+    <string name="label_lacak_stok">Lacak stok</string>
+    <string name="label_jumlah_stok">Jumlah stok</string>
+    <string name="label_stok_minimal">Stok minimal</string>
+    <string name="hint_jumlah_stok">Masukkan jumlah stok</string>
+    <string name="hint_stok_minimal">Masukkan stok minimal</string>
+    <string name="error_jumlah_stok_wajib">Jumlah stok wajib diisi</string>
+    <string name="error_stok_minimal_wajib">Stok minimal wajib diisi</string>
+    <string name="badge_stok_menipis">Stok menipis</string>
+    <string name="produk_tidak_ditemukan">Produk tidak ditemukan</string>
 </resources>

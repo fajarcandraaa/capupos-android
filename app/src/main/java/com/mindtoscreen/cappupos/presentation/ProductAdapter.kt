@@ -10,7 +10,8 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class ProductAdapter(
-    private val onItemClick: (Product) -> Unit = { }
+    private val onItemClick: (Product) -> Unit = { },
+    private val onItemLongClick: (Product) -> Unit = { }
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var products = emptyList<Product>()
@@ -48,8 +49,20 @@ class ProductAdapter(
             binding.textHarga.text = "Rp ${hargaFormat.format(product.harga)}"
             binding.imgFoto.setImageResource(R.drawable.ic_product)
 
+            // Badge stok menipis: tampil jika lacakStok = true dan jumlahStok <= stokMinimal
+            val showBadge = product.lacakStok &&
+                product.jumlahStok != null &&
+                product.stokMinimal != null &&
+                product.jumlahStok <= product.stokMinimal
+            binding.badgeStokMenipis.visibility = if (showBadge) android.view.View.VISIBLE else android.view.View.GONE
+
             binding.root.setOnClickListener {
                 onItemClick(product)
+            }
+
+            binding.root.setOnLongClickListener {
+                onItemLongClick(product)
+                true
             }
         }
     }

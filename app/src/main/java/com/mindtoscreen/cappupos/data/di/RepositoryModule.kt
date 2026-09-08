@@ -1,6 +1,8 @@
 package com.mindtoscreen.cappupos.data.di
 
+import com.mindtoscreen.cappupos.data.repository.CategoryRepositoryImpl
 import com.mindtoscreen.cappupos.data.repository.ProductRepositoryImpl
+import com.mindtoscreen.cappupos.domain.repository.CategoryRepository
 import com.mindtoscreen.cappupos.domain.repository.ProductRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,10 @@ abstract class RepositoryModule {
     abstract fun bindProductRepository(
         productRepositoryImpl: ProductRepositoryImpl
     ): ProductRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCategoryRepository(
+        categoryRepositoryImpl: CategoryRepositoryImpl
+    ): CategoryRepository
 }
