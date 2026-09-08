@@ -22,7 +22,8 @@ class ProductRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertProduct(product: Product) {
-        productDao.insert(product.toEntity())
+        val existing = productDao.getById(product.id ?: "")
+        productDao.insert(product.toEntity(existingCreatedAt = existing?.createdAt))
     }
 
     override suspend fun deleteProduct(productId: String) {
@@ -43,7 +44,7 @@ class ProductRepositoryImpl @Inject constructor(
         )
     }
 
-    private fun Product.toEntity(): ProductEntity {
+    private fun Product.toEntity(existingCreatedAt: Long? = null): ProductEntity {
         return ProductEntity(
             id = this.id ?: java.util.UUID.randomUUID().toString(),
             nama = this.nama,
@@ -54,7 +55,7 @@ class ProductRepositoryImpl @Inject constructor(
             lacakStok = this.lacakStok,
             jumlahStok = this.jumlahStok,
             stokMinimal = this.stokMinimal,
-            createdAt = System.currentTimeMillis(),
+            createdAt = existingCreatedAt ?: System.currentTimeMillis(),
             updatedAt = System.currentTimeMillis()
         )
     }
