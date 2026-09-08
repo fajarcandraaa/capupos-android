@@ -2,7 +2,9 @@ package com.mindtoscreen.cappupos.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mindtoscreen.cappupos.domain.model.Kategori
 import com.mindtoscreen.cappupos.domain.model.Product
+import com.mindtoscreen.cappupos.domain.repository.CategoryRepository
 import com.mindtoscreen.cappupos.domain.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val productRepository: ProductRepository,
-    private val categoryRepository: com.mindtoscreen.cappupos.domain.repository.CategoryRepository
+    private val categoryRepository: CategoryRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -99,6 +101,6 @@ data class HomeUiState(
     val searchQuery: String = "",
     val filteredProducts: List<Product> = emptyList(),
     val selectedTab: String = "produk",
-    val kategoriList: List<com.mindtoscreen.cappupos.domain.model.Kategori> = emptyList()
+    val kategoriList: List<Kategori> = emptyList()
 )
 
