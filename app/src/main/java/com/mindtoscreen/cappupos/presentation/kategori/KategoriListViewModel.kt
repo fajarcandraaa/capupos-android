@@ -48,8 +48,8 @@ class KategoriListViewModel @Inject constructor(
             tambahKategoriUseCase.execute(nama).onSuccess {
                 loadKategori()
                 _uiState.update { it.copy(successMessage = "Kategori berhasil ditambahkan") }
-            }.onFailure {
-                _uiState.update { it.copy(error = it.message) }
+            }.onFailure { e ->
+                _uiState.update { it.copy(error = e.message) }
             }
         }
     }
@@ -59,8 +59,8 @@ class KategoriListViewModel @Inject constructor(
             ubahKategoriUseCase.execute(kategori).onSuccess {
                 loadKategori()
                 _uiState.update { it.copy(successMessage = "Kategori berhasil diubah") }
-            }.onFailure {
-                _uiState.update { it.copy(error = it.message) }
+            }.onFailure { e ->
+                _uiState.update { it.copy(error = e.message) }
             }
         }
     }
@@ -70,8 +70,8 @@ class KategoriListViewModel @Inject constructor(
             hapusKategoriUseCase.execute(kategoriId).onSuccess {
                 loadKategori()
                 _uiState.update { it.copy(successMessage = "Kategori berhasil dihapus") }
-            }.onFailure {
-                _uiState.update { it.copy(error = it.message) }
+            }.onFailure { e ->
+                _uiState.update { it.copy(error = e.message) }
             }
         }
     }
@@ -80,8 +80,8 @@ class KategoriListViewModel @Inject constructor(
         viewModelScope.launch {
             reorderKategoriUseCase.execute(orderedIds).onSuccess {
                 loadKategori()
-            }.onFailure {
-                _uiState.update { it.copy(error = it.message) }
+            }.onFailure { e ->
+                _uiState.update { it.copy(error = e.message) }
             }
         }
     }
