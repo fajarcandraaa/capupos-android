@@ -17,6 +17,7 @@ import com.mindtoscreen.cappupos.data.entities.*
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): ProductDao
+    abstract fun categoryDao(): CategoryDao
     abstract fun orderDao(): OrderDao
     abstract fun orderDetailDao(): OrderDetailDao
 

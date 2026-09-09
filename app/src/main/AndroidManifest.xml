@@ -39,6 +39,14 @@
             android:name=".presentation.produk.ProductDetailActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".presentation.kategori.KategoriListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.stok.AturStokActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

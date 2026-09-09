@@ -31,4 +31,7 @@ interface ProductDao {
 
     @Query("DELETE FROM products WHERE id = :productId")
     suspend fun hardDelete(productId: String)
+
+    @Query("UPDATE products SET kategoriId = NULL, updatedAt = :timestamp WHERE kategoriId = :kategoriId AND isDeleted = 0")
+    suspend fun detachKategori(kategoriId: String, timestamp: Long)
 }

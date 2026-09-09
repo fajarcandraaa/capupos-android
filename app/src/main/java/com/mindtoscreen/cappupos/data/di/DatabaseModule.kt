@@ -3,6 +3,7 @@ package com.mindtoscreen.cappupos.data.di
 import android.content.Context
 import androidx.room.Room
 import com.mindtoscreen.cappupos.data.AppDatabase
+import com.mindtoscreen.cappupos.data.dao.CategoryDao
 import com.mindtoscreen.cappupos.data.dao.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -31,5 +32,11 @@ object DatabaseModule {
     @Singleton
     fun provideProductDao(database: AppDatabase): ProductDao {
         return database.productDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoryDao(database: AppDatabase): CategoryDao {
+        return database.categoryDao()
     }
 }
