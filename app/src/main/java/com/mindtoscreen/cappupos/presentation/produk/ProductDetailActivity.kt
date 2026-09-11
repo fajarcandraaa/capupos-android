@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityProductDetailBinding
+import com.mindtoscreen.cappupos.domain.model.Kategori
 import com.mindtoscreen.cappupos.domain.model.Product
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -26,6 +27,26 @@ class ProductDetailActivity : AppCompatActivity() {
     private var currentProduct: Product? = null
     private var editMode = false
 
+    private val kategoriAdapter by lazy {
+        object : ArrayAdapter<Kategori>(this, android.R.layout.simple_spinner_item) {
+            init {
+                setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+
+            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getView(position, convertView, parent)
+                (view as android.widget.TextView).text = getItem(position)?.nama ?: ""
+                return view
+            }
+
+            override fun getDropDownView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as android.widget.TextView).text = getItem(position)?.nama ?: ""
+                return view
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
@@ -34,6 +55,7 @@ class ProductDetailActivity : AppCompatActivity() {
         setupToolbar()
         setupKategoriSpinner()
         setupButtons()
+        observeKategori()
 
         val productId = intent.getStringExtra(EXTRA_PRODUCT_ID) ?: return finish()
         viewModel.loadProduct(productId)
@@ -52,9 +74,22 @@ class ProductDetailActivity : AppCompatActivity() {
     }
 
     private fun setupKategoriSpinner() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, KategoriConstants.KATEGORI_LIST)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerKategori.adapter = adapter
+        binding.spinnerKategori.adapter = kategoriAdapter
+    }
+
+    /**
+     * Kategori dinamis dari DB (CategoryRepository via ViewModel), menggantikan
+     * KategoriConstants. TASK-008.
+     */
+    private fun observeKategori() {
+        lifecycleScope.launch {
+            viewModel.kategoriList.collect { kategoriList ->
+                kategoriAdapter.clear()
+                kategoriAdapter.addAll(kategoriList)
+                // Re-select kategori setelah spinner ter-populate
+                currentProduct?.let { selectKategori(it) }
+            }
+        }
     }
 
     private fun setupButtons() {
@@ -77,9 +112,14 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.editHarga.setText(if (product.harga == 0.0) "" else product.harga.toString())
         binding.editDeskripsi.setText(product.deskripsi ?: "")
 
-        val kategoriNama = KategoriConstants.KATEGORI_NAME_MAP[product.kategoriId]
-        val index = KategoriConstants.KATEGORI_LIST.indexOf(kategoriNama)
-        if (index >= 0) binding.spinnerKategori.setSelection(index)
+        selectKategori(product)
+    }
+
+    private fun selectKategori(product: Product) {
+        val index = (0 until kategoriAdapter.count)
+            .firstOrNull { kategoriAdapter.getItem(it)?.id == product.kategoriId }
+            ?: return
+        binding.spinnerKategori.setSelection(index)
     }
 
     private fun setEditMode(enabled: Boolean) {
@@ -96,7 +136,7 @@ class ProductDetailActivity : AppCompatActivity() {
         val nama = binding.editNama.text.toString().trim()
         val harga = binding.editHarga.text.toString().toDoubleOrNull() ?: product.harga
         val deskripsi = binding.editDeskripsi.text.toString().trim().ifEmpty { null }
-        val kategoriNama = binding.spinnerKategori.selectedItem?.toString() ?: ""
+        val kategoriTerpilih = binding.spinnerKategori.selectedItem as? Kategori
 
         if (nama.isEmpty()) {
             binding.editNama.error = getString(R.string.error_nama_wajib)
@@ -105,7 +145,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
         val updated = product.copy(
             nama = nama,
-            kategoriId = KategoriConstants.KATEGORI_ID_MAP[kategoriNama] ?: product.kategoriId,
+            kategoriId = kategoriTerpilih?.id ?: product.kategoriId,
             harga = harga,
             deskripsi = deskripsi
         )

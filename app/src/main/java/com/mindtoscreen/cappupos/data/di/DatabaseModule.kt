@@ -25,6 +25,7 @@ object DatabaseModule {
             "app_database"
         )
             .addMigrations(AppDatabase.MIGRATION_1_2)
+            .addCallback(AppDatabase.CALLBACK)
             .build()
     }
 
