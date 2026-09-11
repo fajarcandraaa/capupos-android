@@ -9,6 +9,11 @@ import com.mindtoscreen.cappupos.databinding.ItemTransaksiManualBinding
 
 /**
  * Adapter baris transaksi manual: nominal + deskripsi bebas + tombol hapus.
+ *
+ * TextWatcher disimpan sebagai field ViewHolder dan dilepas sebelum dipasang
+ * lagi: tanpa itu watcher menumpuk tiap rebind (notifyDataSetChanged dipanggil
+ * per-keystroke via observeState) dan keystroke diduplikasi. setText hanya
+ * dipanggil bila isi beda, supaya kursor tidak lompat ke awal saat mengetik.
  */
 class TransaksiManualAdapter(
     private val onNominalChanged: (Int, String) -> Unit,
@@ -39,25 +44,39 @@ class TransaksiManualAdapter(
     inner class ViewHolder(private val binding: ItemTransaksiManualBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ManualItem, position: Int) {
-            binding.editNominal.setText(item.nominal)
-            binding.editDeskripsi.setText(item.deskripsi)
+        private var nominalWatcher: TextWatcher? = null
+        private var deskripsiWatcher: TextWatcher? = null
 
-            binding.editNominal.addTextChangedListener(object : TextWatcher {
+        fun bind(item: ManualItem, position: Int) {
+            // Lepas watcher dulu agar setText di bawah tidak memicu
+            // onNominalChanged dengan posisi/isi lama.
+            nominalWatcher?.let { binding.editNominal.removeTextChangedListener(it) }
+            deskripsiWatcher?.let { binding.editDeskripsi.removeTextChangedListener(it) }
+
+            if (binding.editNominal.text.toString() != item.nominal) {
+                binding.editNominal.setText(item.nominal)
+            }
+            if (binding.editDeskripsi.text.toString() != item.deskripsi) {
+                binding.editDeskripsi.setText(item.deskripsi)
+            }
+
+            nominalWatcher = object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     onNominalChanged(position, s?.toString() ?: "")
                 }
                 override fun afterTextChanged(s: Editable?) {}
-            })
-
-            binding.editDeskripsi.addTextChangedListener(object : TextWatcher {
+            }
+            deskripsiWatcher = object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     onDeskripsiChanged(position, s?.toString() ?: "")
                 }
                 override fun afterTextChanged(s: Editable?) {}
-            })
+            }
+
+            binding.editNominal.addTextChangedListener(nominalWatcher)
+            binding.editDeskripsi.addTextChangedListener(deskripsiWatcher)
 
             binding.btnRemove.setOnClickListener { onRemove(position) }
         }

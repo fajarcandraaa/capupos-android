@@ -1,5 +1,7 @@
 package com.mindtoscreen.cappupos.data.repository
 
+import androidx.room.withTransaction
+import com.mindtoscreen.cappupos.data.AppDatabase
 import com.mindtoscreen.cappupos.data.dao.OrderDao
 import com.mindtoscreen.cappupos.data.dao.OrderDetailDao
 import com.mindtoscreen.cappupos.data.entities.OrderDetailEntity
@@ -11,6 +13,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 class OrderRepositoryImpl @Inject constructor(
+    private val appDatabase: AppDatabase,
     private val orderDao: OrderDao,
     private val orderDetailDao: OrderDetailDao
 ) : OrderRepository {
@@ -27,9 +30,12 @@ class OrderRepositoryImpl @Inject constructor(
     override suspend fun saveOrder(order: Order): String {
         val now = System.currentTimeMillis()
         val id = order.id ?: UUID.randomUUID().toString()
-        orderDao.insert(order.toEntity(id, now))
-        orderDetailDao.deleteByOrder(id)
-        orderDetailDao.insertAll(order.items.map { it.toEntity(id) })
+        // Atomic: order + detail harus ter-save bersama, bukan sebagian (data-loss guard).
+        appDatabase.withTransaction {
+            orderDao.insert(order.toEntity(id, now))
+            orderDetailDao.deleteByOrder(id)
+            orderDetailDao.insertAll(order.items.map { it.toEntity(id) })
+        }
         return id
     }
 
