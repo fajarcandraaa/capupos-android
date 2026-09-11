@@ -24,7 +24,7 @@ private val DEFAULT_CATEGORIES = listOf(
         OrderEntity::class,
         OrderDetailEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -35,6 +35,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         val MIGRATION_1_2 = MigrationV1ToV2()
+        val MIGRATION_2_3 = MigrationV2ToV3()
 
         /**
          * Seed default kategori saat DB pertama kali dibuat (onCreate) dan saat

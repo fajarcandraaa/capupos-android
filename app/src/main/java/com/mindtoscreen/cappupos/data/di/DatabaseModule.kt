@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.mindtoscreen.cappupos.data.AppDatabase
 import com.mindtoscreen.cappupos.data.dao.CategoryDao
+import com.mindtoscreen.cappupos.data.dao.OrderDao
+import com.mindtoscreen.cappupos.data.dao.OrderDetailDao
 import com.mindtoscreen.cappupos.data.dao.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -24,7 +26,7 @@ object DatabaseModule {
             AppDatabase::class.java,
             "app_database"
         )
-            .addMigrations(AppDatabase.MIGRATION_1_2)
+            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3)
             .addCallback(AppDatabase.CALLBACK)
             .build()
     }
@@ -39,5 +41,17 @@ object DatabaseModule {
     @Singleton
     fun provideCategoryDao(database: AppDatabase): CategoryDao {
         return database.categoryDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrderDao(database: AppDatabase): OrderDao {
+        return database.orderDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrderDetailDao(database: AppDatabase): OrderDetailDao {
+        return database.orderDetailDao()
     }
 }
