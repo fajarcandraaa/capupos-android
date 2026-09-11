@@ -28,7 +28,7 @@ class HomeViewModel @Inject constructor(
         loadProducts()
     }
 
-    private fun loadKategori() {
+    fun loadKategori() {
         viewModelScope.launch {
             try {
                 val kategori = categoryRepository.getKategories()

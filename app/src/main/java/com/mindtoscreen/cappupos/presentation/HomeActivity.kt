@@ -187,6 +187,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Reload kategori juga: kategori baru dari KategoriListActivity harus
+        // muncul kembali di home tanpa restart app. TASK-008 fix.
+        viewModel.loadKategori()
         viewModel.loadProducts()
     }
 
