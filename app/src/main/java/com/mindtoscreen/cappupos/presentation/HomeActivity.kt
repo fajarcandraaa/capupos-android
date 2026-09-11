@@ -21,6 +21,7 @@ import com.mindtoscreen.cappupos.presentation.kategori.KategoriListActivity
 import com.mindtoscreen.cappupos.presentation.produk.ProductDetailActivity
 import com.mindtoscreen.cappupos.presentation.produk.TambahProdukActivity
 import com.mindtoscreen.cappupos.presentation.stok.AturStokActivity
+import com.mindtoscreen.cappupos.presentation.transaksi.TransaksiActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -74,6 +75,7 @@ class HomeActivity : AppCompatActivity() {
                 binding.root.findViewById(R.id.tab_langsung),
                 binding.root.findViewById(R.id.tab_produk)
             )
+            startActivity(Intent(this, TransaksiActivity::class.java))
         }
     }
 

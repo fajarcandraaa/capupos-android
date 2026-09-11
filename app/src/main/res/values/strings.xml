@@ -64,4 +64,28 @@
     <string name="error_stok_minimal_wajib">Stok minimal wajib diisi</string>
     <string name="badge_stok_menipis">Stok menipis</string>
     <string name="produk_tidak_ditemukan">Produk tidak ditemukan</string>
+
+    <!-- Transaksi (Open Bill / PO) -->
+    <string name="transaksi_title">Transaksi</string>
+    <string name="keranjang_title">Keranjang</string>
+    <string name="keranjang_kosong">Keranjang kosong</string>
+    <string name="btn_simpan_bill">Simpan (Open Bill)</string>
+    <string name="btn_transaksi_manual">Transaksi Manual</string>
+    <string name="btn_belum_bayar">Belum Bayar</string>
+    <string name="total">Total</string>
+    <string name="transaksi_manual_title">Transaksi Manual</string>
+    <string name="label_nominal">Nominal</string>
+    <string name="hint_nominal">0</string>
+    <string name="hint_deskripsi_item">Deskripsi (opsional)</string>
+    <string name="btn_tambah_item">Tambah item</string>
+    <string name="error_nominal_wajib">Nominal wajib diisi</string>
+    <string name="error_keranjang_kosong">Keranjang masih kosong</string>
+    <string name="msg_bill_tersimpan">Transaksi tersimpan sebagai Belum Bayar</string>
+    <string name="msg_gagal_simpan_transaksi">Gagal menyimpan transaksi</string>
+    <string name="belum_bayar_title">Belum Bayar</string>
+    <string name="belum_bayar_kosong">Belum ada transaksi tertunda</string>
+    <string name="ubah_status_po">Ubah status PO</string>
+    <string name="status_po">Status PO</string>
+    <string name="msg_status_po_berubah">Status PO diperbarui</string>
+    <string name="msg_gagal_ubah_status_po">Gagal mengubah status PO</string>
 </resources>

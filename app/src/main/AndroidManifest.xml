@@ -47,6 +47,18 @@
             android:name=".presentation.stok.AturStokActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".presentation.transaksi.TransaksiActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.transaksi.BelumBayarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.transaksimanual.TransaksiManualActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
