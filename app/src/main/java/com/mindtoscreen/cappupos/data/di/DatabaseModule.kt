@@ -7,6 +7,7 @@ import com.mindtoscreen.cappupos.data.dao.CategoryDao
 import com.mindtoscreen.cappupos.data.dao.OrderDao
 import com.mindtoscreen.cappupos.data.dao.OrderDetailDao
 import com.mindtoscreen.cappupos.data.dao.ProductDao
+import com.mindtoscreen.cappupos.data.dao.StockHistoryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +27,7 @@ object DatabaseModule {
             AppDatabase::class.java,
             "app_database"
         )
-            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3)
+            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4)
             .addCallback(AppDatabase.CALLBACK)
             .build()
     }
@@ -53,5 +54,11 @@ object DatabaseModule {
     @Singleton
     fun provideOrderDetailDao(database: AppDatabase): OrderDetailDao {
         return database.orderDetailDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideStockHistoryDao(database: AppDatabase): StockHistoryDao {
+        return database.stockHistoryDao()
     }
 }

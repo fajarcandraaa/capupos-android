@@ -59,6 +59,22 @@
             android:name=".presentation.transaksimanual.TransaksiManualActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".presentation.pembayaran.PembayaranActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.riwayat.RiwayatActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.laporan.LaporanActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.laporan.LaporanStokActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

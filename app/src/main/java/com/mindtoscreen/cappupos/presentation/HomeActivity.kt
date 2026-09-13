@@ -17,9 +17,12 @@ import com.mindtoscreen.cappupos.R
 import com.mindtoscreen.cappupos.databinding.ActivityHomeBinding
 import com.mindtoscreen.cappupos.domain.model.Kategori
 import com.mindtoscreen.cappupos.domain.model.Product
+import androidx.appcompat.app.AlertDialog
 import com.mindtoscreen.cappupos.presentation.kategori.KategoriListActivity
+import com.mindtoscreen.cappupos.presentation.laporan.LaporanActivity
 import com.mindtoscreen.cappupos.presentation.produk.ProductDetailActivity
 import com.mindtoscreen.cappupos.presentation.produk.TambahProdukActivity
+import com.mindtoscreen.cappupos.presentation.riwayat.RiwayatActivity
 import com.mindtoscreen.cappupos.presentation.stok.AturStokActivity
 import com.mindtoscreen.cappupos.presentation.transaksi.TransaksiActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -166,7 +169,21 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupMenuButton() {
         binding.menuButton.setOnClickListener {
-            startActivity(Intent(this, KategoriListActivity::class.java))
+            val menu = arrayOf(
+                getString(R.string.menu_kategori),
+                getString(R.string.menu_riwayat),
+                getString(R.string.menu_laporan)
+            )
+            AlertDialog.Builder(this)
+                .setItems(menu) { _, which ->
+                    val target = when (which) {
+                        0 -> KategoriListActivity::class.java
+                        1 -> RiwayatActivity::class.java
+                        else -> LaporanActivity::class.java
+                    }
+                    startActivity(Intent(this, target))
+                }
+                .show()
         }
     }
 

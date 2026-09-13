@@ -88,4 +88,65 @@
     <string name="status_po">Status PO</string>
     <string name="msg_status_po_berubah">Status PO diperbarui</string>
     <string name="msg_gagal_ubah_status_po">Gagal mengubah status PO</string>
+
+    <!-- Pembayaran (TASK-006) -->
+    <string name="pembayaran_title">Pembayaran</string>
+    <string name="label_metode_bayar">Metode Bayar</string>
+    <string name="metode_tunai">Tunai</string>
+    <string name="metode_qris">QRIS</string>
+    <string name="metode_debit">Debit</string>
+    <string name="metode_transfer">Transfer</string>
+    <string name="label_nominal_diterima">Nominal Diterima</string>
+    <string name="hint_nominal_diterima">Masukkan nominal diterima</string>
+    <string name="label_kembalian">Kembalian</string>
+    <string name="kembalian_auto">Kembalian otomatis</string>
+    <string name="btn_bayar">Bayar</string>
+    <string name="label_catatan_opsional">Catatan (Opsional)</string>
+    <string name="hint_catatan">Tambahkan catatan</string>
+    <string name="msg_bayar_sukses">Pembayaran berhasil</string>
+    <string name="msg_gagal_bayar">Gagal memproses pembayaran</string>
+    <string name="error_nominal_kurang">Nominal diterima kurang dari total</string>
+    <string name="suggestion_uang_pas">Uang Pas</string>
+
+    <!-- Riwayat (TASK-006) -->
+    <string name="riwayat_title">Riwayat Transaksi</string>
+    <string name="riwayat_kosong">Belum ada transaksi</string>
+    <string name="filter_semua_kategori">Semua Kategori</string>
+    <string name="filter_semua_metode">Semua Metode</string>
+    <string name="filter_tanggal">Rentang Tanggal</string>
+    <string name="filter_reset">Reset</string>
+    <string name="label_filter">Filter</string>
+    <string name="btn_hapus_transaksi">Hapus</string>
+    <string name="dialog_hapus_transaksi_title">Hapus Transaksi</string>
+    <string name="dialog_hapus_transaksi_message_lunas">Transaksi lunas akan dihapus (soft delete). Lanjutkan?</string>
+    <string name="dialog_hapus_transaksi_message_belum_bayar">Transaksi belum bayar akan dihapus permanen. Lanjutkan?</string>
+    <string name="msg_hapus_sukses">Transaksi dihapus</string>
+    <string name="msg_gagal_hapus_transaksi">Gagal menghapus transaksi</string>
+    <string name="status_lunas_label">Lunas</string>
+    <string name="status_belum_bayar_label">Belum Bayar</string>
+    <string name="hint_cari_tanggal">Pilih tanggal</string>
+
+    <!-- Laporan (TASK-006) -->
+    <string name="laporan_title">Laporan</string>
+    <string name="laporan_periode_hari">Hari Ini</string>
+    <string name="laporan_periode_minggu">Minggu Ini</string>
+    <string name="laporan_periode_bulan">Bulan Ini</string>
+    <string name="laporan_periode_hari_ini">Hari Ini</string>
+    <string name="laporan_periode_minggu_ini">Minggu Ini</string>
+    <string name="laporan_periode_bulan_ini">Bulan Ini</string>
+    <string name="label_total_penjualan">Total Penjualan</string>
+    <string name="label_jumlah_transaksi">Jumlah Transaksi</string>
+    <string name="label_metode_terpopuler">Metode Terpopuler</string>
+    <string name="label_grafik_tren">Grafik Tren Penjualan</string>
+    <string name="laporan_kosong">Belum ada data penjualan pada periode ini</string>
+    <string name="laporan_stok_title">Histori Stok</string>
+    <string name="laporan_stok_kosong">Belum ada perubahan stok</string>
+    <string name="laporan_stok_subtitle">Histori perubahan stok dari alur pembayaran</string>
+    <string name="lihat_histori_stok">Lihat histori stok</string>
+    <string name="laporan_periode_range">%1$s — %2$s</string>
+
+    <!-- Menu home (TASK-006) -->
+    <string name="menu_kategori">Kategori</string>
+    <string name="menu_riwayat">Riwayat Transaksi</string>
+    <string name="menu_laporan">Laporan</string>
 </resources>
