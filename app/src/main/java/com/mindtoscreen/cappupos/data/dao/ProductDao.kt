@@ -34,4 +34,7 @@ interface ProductDao {
 
     @Query("UPDATE products SET kategoriId = NULL, updatedAt = :timestamp WHERE kategoriId = :kategoriId AND isDeleted = 0")
     suspend fun detachKategori(kategoriId: String, timestamp: Long)
+
+    @Query("UPDATE products SET jumlahStok = :jumlahStok, updatedAt = :timestamp WHERE id = :productId")
+    suspend fun updateStok(productId: String, jumlahStok: Int, timestamp: Long)
 }
