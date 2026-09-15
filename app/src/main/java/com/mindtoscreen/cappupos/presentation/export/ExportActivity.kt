@@ -72,7 +72,7 @@ class ExportActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_STREAM, uri)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.btn_export_data)))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.export_title)))
     }
 
     override fun onSupportNavigateUp(): Boolean {

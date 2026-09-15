@@ -146,6 +146,7 @@
     <string name="laporan_periode_range">%1$s — %2$s</string>
 
     <!-- Menu home (TASK-006) -->
+    <string name="menu_profil_pengaturan">Profil/Pengaturan</string>
     <string name="menu_kategori">Kategori</string>
     <string name="menu_riwayat">Riwayat Transaksi</string>
     <string name="menu_laporan">Laporan</string>

@@ -230,6 +230,10 @@ class HomeActivity : AppCompatActivity() {
             .setMessage(R.string.reminder_backup_message)
             .setCancelable(false)
             .setPositiveButton(R.string.btn_export_sekarang) { _, _ ->
+                // Bug fix: reset counter juga di "Export Sekarang", bukan hanya
+                // saat share sukses — cegah popup muncul lagi tiap onResume
+                // kalau user back-out dari ExportActivity tanpa export.
+                cekReminderBackupUseCase.markReminderShown()
                 startActivity(Intent(this, ExportActivity::class.java))
             }
             .setNegativeButton(R.string.btn_nanti_saja) { _, _ ->

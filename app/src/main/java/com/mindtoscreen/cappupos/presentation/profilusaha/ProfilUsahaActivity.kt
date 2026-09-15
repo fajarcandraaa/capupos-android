@@ -3,6 +3,7 @@ package com.mindtoscreen.cappupos.presentation.profilusaha
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import java.io.File
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,14 +26,21 @@ class ProfilUsahaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfilUsahaBinding
     private val viewModel: ProfilUsahaViewModel by viewModels()
-    private var selectedLogoUri: Uri? = null
     private var currentLogo: String? = null
 
+    // Bug fix: GetContent() URI sementara (hilang setelah restart/process death).
+    // Copy ke internal storage, simpan path file agar persist.
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            selectedLogoUri = it
-            binding.ivLogo.setImageURI(it)
-        }
+        uri?.let { copyLogoToInternalStorage(it) }
+    }
+
+    private fun copyLogoToInternalStorage(uri: Uri) {
+        val dest = File(filesDir, "logo_usaha.jpg")
+        contentResolver.openInputStream(uri)?.use { input ->
+            dest.outputStream().use { output -> input.copyTo(output) }
+        } ?: return
+        currentLogo = dest.absolutePath
+        binding.ivLogo.setImageURI(Uri.fromFile(dest))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +73,11 @@ class ProfilUsahaActivity : AppCompatActivity() {
                 binding.editKategori.setText(store.kategori ?: "")
                 binding.editDeskripsi.setText(store.deskripsi ?: "")
                 currentLogo = store.logo
-                store.logo?.let { binding.ivLogo.setImageURI(Uri.parse(it)) }
+                // Backward compat: logo bisa content:// URI (legacy) atau /internal/path (file).
+                store.logo?.let { path ->
+                    val uri = if (path.startsWith("/")) Uri.fromFile(File(path)) else Uri.parse(path)
+                    binding.ivLogo.setImageURI(uri)
+                }
             }
         }
     }
@@ -101,7 +113,7 @@ class ProfilUsahaActivity : AppCompatActivity() {
         val store = Store(
             nama = nama,
             alamat = alamat,
-            logo = selectedLogoUri?.toString() ?: currentLogo,
+            logo = currentLogo,
             kategori = binding.editKategori.text.toString().trim().ifEmpty { null },
             deskripsi = binding.editDeskripsi.text.toString().trim().ifEmpty { null },
             telepon = binding.editTelepon.text.toString().trim().ifEmpty { null }

@@ -120,7 +120,7 @@ private class XlsxWriter {
         val isNumber: Boolean
     )
 
-    private class SheetData(
+    internal class SheetData(
         val name: String,
         val rows: List<List<String>>
     ) {
@@ -147,7 +147,7 @@ private class XlsxWriter {
         }
     }
 
-    private class SheetBuilder {
+    internal class SheetBuilder {
         val sheets = mutableListOf<SheetData>()
 
         fun sheet(name: String, header: List<String>, rows: List<List<String>>) {
