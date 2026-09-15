@@ -154,7 +154,7 @@ class TransaksiViewModel @Inject constructor(
         val items = _uiState.value.keranjang.map {
             OrderItem(
                 productId = it.product.id,
-                namaItem = it.product.nama,
+                namaItem = it.product.nama.ifBlank { null },
                 quantity = it.quantity,
                 price = it.product.harga
             )
