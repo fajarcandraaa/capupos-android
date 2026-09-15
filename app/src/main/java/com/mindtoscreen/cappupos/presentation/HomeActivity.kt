@@ -18,18 +18,25 @@ import com.mindtoscreen.cappupos.databinding.ActivityHomeBinding
 import com.mindtoscreen.cappupos.domain.model.Kategori
 import com.mindtoscreen.cappupos.domain.model.Product
 import androidx.appcompat.app.AlertDialog
+import com.mindtoscreen.cappupos.presentation.export.ExportActivity
 import com.mindtoscreen.cappupos.presentation.kategori.KategoriListActivity
 import com.mindtoscreen.cappupos.presentation.laporan.LaporanActivity
 import com.mindtoscreen.cappupos.presentation.produk.ProductDetailActivity
 import com.mindtoscreen.cappupos.presentation.produk.TambahProdukActivity
+import com.mindtoscreen.cappupos.presentation.profilusaha.ProfilUsahaActivity
 import com.mindtoscreen.cappupos.presentation.riwayat.RiwayatActivity
 import com.mindtoscreen.cappupos.presentation.stok.AturStokActivity
 import com.mindtoscreen.cappupos.presentation.transaksi.TransaksiActivity
+import com.mindtoscreen.cappupos.domain.usecase.CekReminderBackupUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var cekReminderBackupUseCase: CekReminderBackupUseCase
 
     private lateinit var binding: ActivityHomeBinding
     private val viewModel: HomeViewModel by viewModels()
@@ -170,6 +177,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupMenuButton() {
         binding.menuButton.setOnClickListener {
             val menu = arrayOf(
+                getString(R.string.menu_profil_pengaturan),
                 getString(R.string.menu_kategori),
                 getString(R.string.menu_riwayat),
                 getString(R.string.menu_laporan)
@@ -177,8 +185,9 @@ class HomeActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setItems(menu) { _, which ->
                     val target = when (which) {
-                        0 -> KategoriListActivity::class.java
-                        1 -> RiwayatActivity::class.java
+                        0 -> ProfilUsahaActivity::class.java
+                        1 -> KategoriListActivity::class.java
+                        2 -> RiwayatActivity::class.java
                         else -> LaporanActivity::class.java
                     }
                     startActivity(Intent(this, target))
@@ -210,6 +219,23 @@ class HomeActivity : AppCompatActivity() {
         // muncul kembali di home tanpa restart app. TASK-008 fix.
         viewModel.loadKategori()
         viewModel.loadProducts()
+        cekReminderBackup()
+    }
+
+    /** FR-12: reminder backup mingguan, popup wajib dismiss via salah satu tombol. */
+    private fun cekReminderBackup() {
+        if (!cekReminderBackupUseCase.execute()) return
+        AlertDialog.Builder(this)
+            .setTitle(R.string.reminder_backup_title)
+            .setMessage(R.string.reminder_backup_message)
+            .setCancelable(false)
+            .setPositiveButton(R.string.btn_export_sekarang) { _, _ ->
+                startActivity(Intent(this, ExportActivity::class.java))
+            }
+            .setNegativeButton(R.string.btn_nanti_saja) { _, _ ->
+                cekReminderBackupUseCase.markReminderShown()
+            }
+            .show()
     }
 
     private fun openDetail(product: Product) {

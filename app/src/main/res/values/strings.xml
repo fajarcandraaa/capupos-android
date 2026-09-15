@@ -149,4 +149,42 @@
     <string name="menu_kategori">Kategori</string>
     <string name="menu_riwayat">Riwayat Transaksi</string>
     <string name="menu_laporan">Laporan</string>
+
+    <!-- Profil Usaha (TASK-007) -->
+    <string name="profil_usaha_title">Profil Usaha</string>
+    <string name="label_logo_usaha">Logo usaha</string>
+    <string name="label_nama_usaha">Nama Usaha</string>
+    <string name="label_alamat_usaha">Alamat</string>
+    <string name="label_telepon_usaha">Telepon</string>
+    <string name="label_kategori_usaha">Kategori Usaha</string>
+    <string name="label_deskripsi_usaha">Deskripsi</string>
+    <string name="hint_nama_usaha">Masukkan nama usaha</string>
+    <string name="hint_alamat_usaha">Masukkan alamat</string>
+    <string name="hint_telepon_usaha">Masukkan nomor telepon</string>
+    <string name="hint_kategori_usaha">Masukkan kategori usaha</string>
+    <string name="hint_deskripsi_usaha">Masukkan deskripsi</string>
+    <string name="error_nama_usaha_wajib">Nama usaha wajib diisi</string>
+    <string name="error_alamat_usaha_wajib">Alamat usaha wajib diisi</string>
+    <string name="msg_profil_tersimpan">Profil usaha berhasil disimpan</string>
+    <string name="msg_gagal_simpan_profil">Gagal menyimpan profil usaha</string>
+    <string name="btn_lihat_struk_terakhir">Lihat Struk Transaksi Terakhir</string>
+    <string name="msg_belum_ada_struk">Belum ada transaksi lunas</string>
+
+    <!-- Struk (TASK-007) -->
+    <string name="struk_title">Struk Digital</string>
+    <string name="btn_bagikan_struk">Bagikan Struk</string>
+    <string name="msg_gagal_muat_struk">Gagal memuat struk</string>
+
+    <!-- Reminder Backup (TASK-007) -->
+    <string name="reminder_backup_title">Backup Data</string>
+    <string name="reminder_backup_message">Sudah seminggu sejak backup terakhir. Export data sekarang untuk mencegah kehilangan data.</string>
+    <string name="btn_export_sekarang">Export Sekarang</string>
+    <string name="btn_nanti_saja">Nanti Saja</string>
+
+    <!-- Export (TASK-007) -->
+    <string name="export_title">Export Data</string>
+    <string name="msg_export_info">Export data ke file Excel</string>
+    <string name="msg_export_desc">File berisi 3 sheet: Transaksi, Produk, dan Laporan Ringkas. File akan dibagikan lewat aplikasi pilihan Anda.</string>
+    <string name="btn_mulai_export">Export Data</string>
+    <string name="msg_gagal_export">Gagal export data</string>
 </resources>

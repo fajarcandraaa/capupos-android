@@ -6,6 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "stores")
 data class StoreEntity(
     @PrimaryKey val id: Long = 1,
-    val name: String,
-    val address: String
+    val nama: String,
+    val alamat: String,
+    val logo: String? = null,
+    val kategori: String? = null,
+    val deskripsi: String? = null,
+    val telepon: String? = null
 )
