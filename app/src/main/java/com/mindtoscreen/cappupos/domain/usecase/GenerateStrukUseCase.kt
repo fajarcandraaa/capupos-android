@@ -38,7 +38,7 @@ class GenerateStrukUseCase @Inject constructor(
             sb.appendLine("Tanggal : ${tanggalFormat.format(Date(order.tanggal))}")
             sb.appendLine("------------------------------")
             order.items.forEach { item ->
-                sb.appendLine(item.deskripsi ?: item.productId ?: "-")
+                sb.appendLine(item.namaItem ?: item.deskripsi ?: item.productId ?: "-")
                 sb.appendLine("  ${item.quantity} x Rp ${harga.format(item.price)}")
             }
             sb.appendLine("------------------------------")

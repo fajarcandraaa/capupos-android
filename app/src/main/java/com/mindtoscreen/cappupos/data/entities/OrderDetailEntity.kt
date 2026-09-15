@@ -28,5 +28,6 @@ data class OrderDetailEntity(
     val productId: String? = null,
     val quantity: Int = 0,
     val price: Double = 0.0,
-    val deskripsi: String? = null
+    val deskripsi: String? = null,
+    val namaItem: String? = null
 )
