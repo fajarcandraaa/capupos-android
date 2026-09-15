@@ -206,6 +206,7 @@ class OrderRepositoryImpl @Inject constructor(
             id = this.id,
             productId = this.productId,
             deskripsi = this.deskripsi,
+            namaItem = this.namaItem,
             quantity = this.quantity,
             price = this.price
         )
@@ -234,7 +235,8 @@ class OrderRepositoryImpl @Inject constructor(
             productId = this.productId,
             quantity = this.quantity,
             price = this.price,
-            deskripsi = this.deskripsi
+            deskripsi = this.deskripsi,
+            namaItem = this.namaItem
         )
     }
 }

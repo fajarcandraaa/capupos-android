@@ -26,7 +26,7 @@ private val DEFAULT_CATEGORIES = listOf(
         StockHistoryEntity::class,
         StoreEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -42,6 +42,7 @@ abstract class AppDatabase : RoomDatabase() {
         val MIGRATION_2_3 = MigrationV2ToV3()
         val MIGRATION_3_4 = MigrationV3ToV4()
         val MIGRATION_4_5 = MigrationV4ToV5()
+        val MIGRATION_5_6 = MigrationV5ToV6()
 
         /**
          * Seed default kategori saat DB pertama kali dibuat (onCreate) dan saat

@@ -152,7 +152,12 @@ class TransaksiViewModel @Inject constructor(
 
     fun simpanBill() {
         val items = _uiState.value.keranjang.map {
-            OrderItem(productId = it.product.id, quantity = it.quantity, price = it.product.harga)
+            OrderItem(
+                productId = it.product.id,
+                namaItem = it.product.nama,
+                quantity = it.quantity,
+                price = it.product.harga
+            )
         }
         if (items.isEmpty()) {
             _uiState.update { it.copy(error = "Keranjang masih kosong") }
