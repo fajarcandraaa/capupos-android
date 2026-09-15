@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cappu POS</string>
+    <string name="versi_aplikasi">Versi aplikasi 1.0</string>
+    <string name="tab_produk">Produk</string>
+    <string name="tab_langsung">Langsung</string>
+    <string name="produk_belum_tersedia">Produk belum tersedia</string>
+    <string name="empty_state_subtitle">Anda belum melakukan pengelolaan data produk. Silahkan tambahkan sekarang.</string>
+    <string name="tambah_produk">Tambah produk</string>
+    <string name="pencarian">Pencarian</string>
+    <string name="chip_semua">Semua</string>
+    <string name="chip_makanan">Makanan</string>
+    <string name="chip_minuman">Minuman</string>
+    <string name="chip_penyedap">Penyedap</string>
+    <string name="nama_produk_placeholder">Nama Produk</string>
+    <string name="harga_produk_placeholder">Rp 0,00</string>
+
+    <!-- Produk: form & detail -->
+    <string name="label_foto_produk">Foto produk</string>
+    <string name="label_nama_produk">Nama Produk</string>
+    <string name="label_kategori">Kategori</string>
+    <string name="label_harga">Harga</string>
+    <string name="label_deskripsi">Deskripsi</string>
+    <string name="label_deskripsi_opsional">Deskripsi (Opsional)</string>
+    <string name="hint_nama_produk">Masukkan nama produk</string>
+    <string name="hint_harga">0</string>
+    <string name="hint_deskripsi">Masukkan deskripsi</string>
+    <string name="btn_batal">Batal</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="btn_ubah">Ubah</string>
+    <string name="btn_hapus">Hapus</string>
+    <string name="detail_produk_title">Detail Produk</string>
+    <string name="error_nama_wajib">Nama produk wajib diisi</string>
+    <string name="error_kategori_wajib">Kategori wajib dipilih</string>
+    <string name="msg_simpan_sukses">Produk berhasil disimpan</string>
+    <string name="msg_ubah_sukses">Produk berhasil diubah</string>
+    <string name="msg_gagal_simpan">Gagal menyimpan produk</string>
+    <string name="msg_gagal_ubah">Gagal mengubah produk</string>
+    <string name="msg_gagal_hapus">Gagal menghapus produk</string>
+    <string name="dialog_hapus_title">Hapus Produk</string>
+    <string name="dialog_hapus_message">Apakah Anda yakin ingin menghapus \"%1$s\"?</string>
+
+    <!-- Kategori -->
+    <string name="kategori_title">Kelola Kategori</string>
+    <string name="tambah_kategori">Tambah kategori</string>
+    <string name="tambah_kategori_title">Tambah Kategori</string>
+    <string name="ubah_kategori_title">Ubah Kategori</string>
+    <string name="hint_nama_kategori">Masukkan nama kategori</string>
+    <string name="error_nama_kategori_wajib">Nama kategori wajib diisi</string>
+    <string name="kategori_belum_ada">Belum ada kategori</string>
+    <string name="kategori_belum_ada_subtitle">Tambahkan kategori untuk mengelompokkan produk.</string>
+    <string name="dialog_hapus_kategori_title">Hapus Kategori</string>
+    <string name="dialog_hapus_kategori_message">Apakah Anda yakin ingin menghapus kategori \"%1$s\"?</string>
+    <string name="dialog_hapus_kategori_message_dengan_produk">Kategori \"%1$s\" masih dipakai %2$d produk. Produk terkait akan menjadi \"Tanpa Kategori\". Lanjutkan hapus?</string>
+
+    <!-- Stok -->
+    <string name="atur_stok_title">Atur Ketersediaan Stok</string>
+    <string name="label_lacak_stok">Lacak stok</string>
+    <string name="label_jumlah_stok">Jumlah stok</string>
+    <string name="label_stok_minimal">Stok minimal</string>
+    <string name="hint_jumlah_stok">Masukkan jumlah stok</string>
+    <string name="hint_stok_minimal">Masukkan stok minimal</string>
+    <string name="error_jumlah_stok_wajib">Jumlah stok wajib diisi</string>
+    <string name="error_stok_minimal_wajib">Stok minimal wajib diisi</string>
+    <string name="badge_stok_menipis">Stok menipis</string>
+    <string name="produk_tidak_ditemukan">Produk tidak ditemukan</string>
+
+    <!-- Transaksi (Open Bill / PO) -->
+    <string name="transaksi_title">Transaksi</string>
+    <string name="keranjang_title">Keranjang</string>
+    <string name="keranjang_kosong">Keranjang kosong</string>
+    <string name="btn_simpan_bill">Simpan (Open Bill)</string>
+    <string name="btn_transaksi_manual">Transaksi Manual</string>
+    <string name="btn_belum_bayar">Belum Bayar</string>
+    <string name="total">Total</string>
+    <string name="transaksi_manual_title">Transaksi Manual</string>
+    <string name="label_nominal">Nominal</string>
+    <string name="hint_nominal">0</string>
+    <string name="hint_deskripsi_item">Deskripsi (opsional)</string>
+    <string name="btn_tambah_item">Tambah item</string>
+    <string name="error_nominal_wajib">Nominal wajib diisi</string>
+    <string name="error_keranjang_kosong">Keranjang masih kosong</string>
+    <string name="msg_bill_tersimpan">Transaksi tersimpan sebagai Belum Bayar</string>
+    <string name="msg_gagal_simpan_transaksi">Gagal menyimpan transaksi</string>
+    <string name="belum_bayar_title">Belum Bayar</string>
+    <string name="belum_bayar_kosong">Belum ada transaksi tertunda</string>
+    <string name="ubah_status_po">Ubah status PO</string>
+    <string name="status_po">Status PO</string>
+    <string name="msg_status_po_berubah">Status PO diperbarui</string>
+    <string name="msg_gagal_ubah_status_po">Gagal mengubah status PO</string>
+
+    <!-- Pembayaran (TASK-006) -->
+    <string name="pembayaran_title">Pembayaran</string>
+    <string name="label_metode_bayar">Metode Bayar</string>
+    <string name="metode_tunai">Tunai</string>
+    <string name="metode_qris">QRIS</string>
+    <string name="metode_debit">Debit</string>
+    <string name="metode_transfer">Transfer</string>
+    <string name="label_nominal_diterima">Nominal Diterima</string>
+    <string name="hint_nominal_diterima">Masukkan nominal diterima</string>
+    <string name="label_kembalian">Kembalian</string>
+    <string name="kembalian_auto">Kembalian otomatis</string>
+    <string name="btn_bayar">Bayar</string>
+    <string name="label_catatan_opsional">Catatan (Opsional)</string>
+    <string name="hint_catatan">Tambahkan catatan</string>
+    <string name="msg_bayar_sukses">Pembayaran berhasil</string>
+    <string name="msg_gagal_bayar">Gagal memproses pembayaran</string>
+    <string name="error_nominal_kurang">Nominal diterima kurang dari total</string>
+    <string name="suggestion_uang_pas">Uang Pas</string>
+
+    <!-- Riwayat (TASK-006) -->
+    <string name="riwayat_title">Riwayat Transaksi</string>
+    <string name="riwayat_kosong">Belum ada transaksi</string>
+    <string name="filter_semua_kategori">Semua Kategori</string>
+    <string name="filter_semua_metode">Semua Metode</string>
+    <string name="filter_tanggal">Rentang Tanggal</string>
+    <string name="filter_reset">Reset</string>
+    <string name="label_filter">Filter</string>
+    <string name="btn_hapus_transaksi">Hapus</string>
+    <string name="dialog_hapus_transaksi_title">Hapus Transaksi</string>
+    <string name="dialog_hapus_transaksi_message_lunas">Transaksi lunas akan dihapus (soft delete). Lanjutkan?</string>
+    <string name="dialog_hapus_transaksi_message_belum_bayar">Transaksi belum bayar akan dihapus permanen. Lanjutkan?</string>
+    <string name="msg_hapus_sukses">Transaksi dihapus</string>
+    <string name="msg_gagal_hapus_transaksi">Gagal menghapus transaksi</string>
+    <string name="status_lunas_label">Lunas</string>
+    <string name="status_belum_bayar_label">Belum Bayar</string>
+    <string name="hint_cari_tanggal">Pilih tanggal</string>
+
+    <!-- Laporan (TASK-006) -->
+    <string name="laporan_title">Laporan</string>
+    <string name="laporan_periode_hari">Hari Ini</string>
+    <string name="laporan_periode_minggu">Minggu Ini</string>
+    <string name="laporan_periode_bulan">Bulan Ini</string>
+    <string name="laporan_periode_hari_ini">Hari Ini</string>
+    <string name="laporan_periode_minggu_ini">Minggu Ini</string>
+    <string name="laporan_periode_bulan_ini">Bulan Ini</string>
+    <string name="label_total_penjualan">Total Penjualan</string>
+    <string name="label_jumlah_transaksi">Jumlah Transaksi</string>
+    <string name="label_metode_terpopuler">Metode Terpopuler</string>
+    <string name="label_grafik_tren">Grafik Tren Penjualan</string>
+    <string name="laporan_kosong">Belum ada data penjualan pada periode ini</string>
+    <string name="laporan_stok_title">Histori Stok</string>
+    <string name="laporan_stok_kosong">Belum ada perubahan stok</string>
+    <string name="laporan_stok_subtitle">Histori perubahan stok dari alur pembayaran</string>
+    <string name="lihat_histori_stok">Lihat histori stok</string>
+    <string name="laporan_periode_range">%1$s — %2$s</string>
+
+    <!-- Menu home (TASK-006) -->
+    <string name="menu_profil_pengaturan">Profil/Pengaturan</string>
+    <string name="menu_kategori">Kategori</string>
+    <string name="menu_riwayat">Riwayat Transaksi</string>
+    <string name="menu_laporan">Laporan</string>
+
+    <!-- Profil Usaha (TASK-007) -->
+    <string name="profil_usaha_title">Profil Usaha</string>
+    <string name="label_logo_usaha">Logo usaha</string>
+    <string name="label_nama_usaha">Nama Usaha</string>
+    <string name="label_alamat_usaha">Alamat</string>
+    <string name="label_telepon_usaha">Telepon</string>
+    <string name="label_kategori_usaha">Kategori Usaha</string>
+    <string name="label_deskripsi_usaha">Deskripsi</string>
+    <string name="hint_nama_usaha">Masukkan nama usaha</string>
+    <string name="hint_alamat_usaha">Masukkan alamat</string>
+    <string name="hint_telepon_usaha">Masukkan nomor telepon</string>
+    <string name="hint_kategori_usaha">Masukkan kategori usaha</string>
+    <string name="hint_deskripsi_usaha">Masukkan deskripsi</string>
+    <string name="error_nama_usaha_wajib">Nama usaha wajib diisi</string>
+    <string name="error_alamat_usaha_wajib">Alamat usaha wajib diisi</string>
+    <string name="msg_profil_tersimpan">Profil usaha berhasil disimpan</string>
+    <string name="msg_gagal_simpan_profil">Gagal menyimpan profil usaha</string>
+    <string name="btn_lihat_struk_terakhir">Lihat Struk Transaksi Terakhir</string>
+    <string name="msg_belum_ada_struk">Belum ada transaksi lunas</string>
+
+    <!-- Struk (TASK-007) -->
+    <string name="struk_title">Struk Digital</string>
+    <string name="btn_bagikan_struk">Bagikan Struk</string>
+    <string name="msg_gagal_muat_struk">Gagal memuat struk</string>
+
+    <!-- Reminder Backup (TASK-007) -->
+    <string name="reminder_backup_title">Backup Data</string>
+    <string name="reminder_backup_message">Sudah seminggu sejak backup terakhir. Export data sekarang untuk mencegah kehilangan data.</string>
+    <string name="btn_export_sekarang">Export Sekarang</string>
+    <string name="btn_nanti_saja">Nanti Saja</string>
+
+    <!-- Export (TASK-007) -->
+    <string name="export_title">Export Data</string>
+    <string name="msg_export_info">Export data ke file Excel</string>
+    <string name="msg_export_desc">File berisi 3 sheet: Transaksi, Produk, dan Laporan Ringkas. File akan dibagikan lewat aplikasi pilihan Anda.</string>
+    <string name="btn_mulai_export">Export Data</string>
+    <string name="msg_gagal_export">Gagal export data</string>
+</resources>

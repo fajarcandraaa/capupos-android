@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mindtoscreen.cappupos">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".AppApplication"
@@ -21,12 +20,82 @@
         </activity>
 
         <activity
-            android:name=".presentation.OnboardingActivity"
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.onboarding.AddProductActivity"
             android:exported="false" />
 
         <activity
             android:name=".presentation.HomeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".presentation.produk.TambahProdukActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.produk.ProductDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.kategori.KategoriListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.stok.AturStokActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.transaksi.TransaksiActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.transaksi.BelumBayarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.transaksimanual.TransaksiManualActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.pembayaran.PembayaranActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.riwayat.RiwayatActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.laporan.LaporanActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.laporan.LaporanStokActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.profilusaha.ProfilUsahaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.struk.StrukActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.export.ExportActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 

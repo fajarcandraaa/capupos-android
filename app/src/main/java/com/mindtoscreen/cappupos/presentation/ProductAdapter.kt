@@ -1,0 +1,70 @@
+package com.mindtoscreen.cappupos.presentation
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.mindtoscreen.cappupos.R
+import com.mindtoscreen.cappupos.databinding.ItemProductBinding
+import com.mindtoscreen.cappupos.domain.model.Product
+import java.text.NumberFormat
+import java.util.Locale
+
+class ProductAdapter(
+    private val onItemClick: (Product) -> Unit = { },
+    private val onItemLongClick: (Product) -> Unit = { }
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+    private var products = emptyList<Product>()
+
+    private val hargaFormat: NumberFormat = NumberFormat
+        .getNumberInstance(Locale("in", "ID"))
+        .apply {
+            maximumFractionDigits = 0
+            minimumFractionDigits = 0
+        }
+
+    fun updateData(newProducts: List<Product>) {
+        products = newProducts
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val binding = ItemProductBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ProductViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        holder.bind(products[position])
+    }
+
+    override fun getItemCount(): Int = products.size
+
+    inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(product: Product) {
+            binding.textNama.text = product.nama
+            binding.textHarga.text = "Rp ${hargaFormat.format(product.harga)}"
+            binding.imgFoto.setImageResource(R.drawable.ic_product)
+
+            // Badge stok menipis: tampil jika lacakStok = true dan jumlahStok <= stokMinimal
+            val showBadge = product.lacakStok &&
+                product.jumlahStok != null &&
+                product.stokMinimal != null &&
+                product.jumlahStok <= product.stokMinimal
+            binding.badgeStokMenipis.visibility = if (showBadge) android.view.View.VISIBLE else android.view.View.GONE
+
+            binding.root.setOnClickListener {
+                onItemClick(product)
+            }
+
+            binding.root.setOnLongClickListener {
+                onItemLongClick(product)
+                true
+            }
+        }
+    }
+}
+
