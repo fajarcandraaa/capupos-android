@@ -75,6 +75,28 @@
             android:name=".presentation.laporan.LaporanStokActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".presentation.profilusaha.ProfilUsahaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.struk.StrukActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.export.ExportActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

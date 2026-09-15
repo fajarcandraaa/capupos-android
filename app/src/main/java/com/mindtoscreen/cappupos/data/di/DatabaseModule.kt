@@ -1,6 +1,7 @@
 package com.mindtoscreen.cappupos.data.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.mindtoscreen.cappupos.data.AppDatabase
 import com.mindtoscreen.cappupos.data.dao.CategoryDao
@@ -8,6 +9,7 @@ import com.mindtoscreen.cappupos.data.dao.OrderDao
 import com.mindtoscreen.cappupos.data.dao.OrderDetailDao
 import com.mindtoscreen.cappupos.data.dao.ProductDao
 import com.mindtoscreen.cappupos.data.dao.StockHistoryDao
+import com.mindtoscreen.cappupos.data.dao.StoreDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +29,12 @@ object DatabaseModule {
             AppDatabase::class.java,
             "app_database"
         )
-            .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4)
+            .addMigrations(
+                AppDatabase.MIGRATION_1_2,
+                AppDatabase.MIGRATION_2_3,
+                AppDatabase.MIGRATION_3_4,
+                AppDatabase.MIGRATION_4_5
+            )
             .addCallback(AppDatabase.CALLBACK)
             .build()
     }
@@ -60,5 +67,17 @@ object DatabaseModule {
     @Singleton
     fun provideStockHistoryDao(database: AppDatabase): StockHistoryDao {
         return database.stockHistoryDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideStoreDao(database: AppDatabase): StoreDao {
+        return database.storeDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("cappu_prefs", Context.MODE_PRIVATE)
     }
 }

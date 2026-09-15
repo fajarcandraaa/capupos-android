@@ -23,9 +23,10 @@ private val DEFAULT_CATEGORIES = listOf(
         CategoryEntity::class,
         OrderEntity::class,
         OrderDetailEntity::class,
-        StockHistoryEntity::class
+        StockHistoryEntity::class,
+        StoreEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -34,11 +35,13 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun orderDao(): OrderDao
     abstract fun orderDetailDao(): OrderDetailDao
     abstract fun stockHistoryDao(): StockHistoryDao
+    abstract fun storeDao(): StoreDao
 
     companion object {
         val MIGRATION_1_2 = MigrationV1ToV2()
         val MIGRATION_2_3 = MigrationV2ToV3()
         val MIGRATION_3_4 = MigrationV3ToV4()
+        val MIGRATION_4_5 = MigrationV4ToV5()
 
         /**
          * Seed default kategori saat DB pertama kali dibuat (onCreate) dan saat
