@@ -172,6 +172,9 @@ class HomeActivity : AppCompatActivity() {
         binding.fabTambah.setOnClickListener {
             startActivity(Intent(this, TambahProdukActivity::class.java))
         }
+        binding.btnEmptyStateCta.setOnClickListener {
+            startActivity(Intent(this, TambahProdukActivity::class.java))
+        }
     }
 
     private fun setupMenuButton() {
