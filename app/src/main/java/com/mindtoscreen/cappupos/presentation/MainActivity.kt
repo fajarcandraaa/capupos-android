@@ -19,6 +19,6 @@ class MainActivity : ComponentActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, OnboardingActivity::class.java))
             finish()
-        }, 2000)
+        }, 1500)
     }
 }
