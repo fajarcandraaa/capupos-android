@@ -17,10 +17,10 @@ class CekReminderBackupUseCase @Inject constructor(
         const val INTERVAL_MILLIS = 7L * 24 * 60 * 60 * 1000 // 7 hari
     }
 
-    /** True bila sudah lewat 7 hari sejak reminder terakhir (atau belum pernah). */
+    /** True bila sudah lewat 7 hari sejak reminder terakhir. False saat first launch (lastReminderAt == 0L). */
     fun execute(): Boolean {
         val lastReminderAt = sharedPreferences.getLong(KEY_LAST_REMINDER, 0L)
-        if (lastReminderAt == 0L) return true
+        if (lastReminderAt == 0L) return false
         return System.currentTimeMillis() - lastReminderAt >= INTERVAL_MILLIS
     }
 
